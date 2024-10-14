@@ -54,7 +54,10 @@
 
 ## Screenshots
 
-Pending to add
+- [Figma Design Link](https://www.figma.com/design/3OLvr9q7xAIVMG2fzhNr34/ManetesArtistes-%7C-Disseny?node-id=0-1&t=awHKHu702K9jZNj9-1)
+
+### Final Application Screenshots
+- Pending to add
 
 ## Roadmap
 
