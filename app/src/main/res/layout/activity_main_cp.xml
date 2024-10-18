@@ -7,4 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".games.coloring_pages.MainActivityColoringPages">
 
+    chinchen
+
 </androidx.constraintlayout.widget.ConstraintLayout>
