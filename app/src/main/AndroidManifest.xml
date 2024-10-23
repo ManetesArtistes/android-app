@@ -12,6 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Manetes_artistes_app"
         tools:targetApi="31">
+
+        <activity
+            android:name=".games.simon_says.GameActivitySimonSays"
+            android:exported="false" />
+        <activity
+            android:name=".games.simon_says.MainActivitySimonSays"
+            android:exported="false" />
+        <activity
+            android:name=".games.coloring_pages.MainActivityColoringPages"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">manetes_artistes_app</string>
+
+
+    <string name="simon_says_yellow">groc</string>
+    <string name="simon_says_blue">blau</string>
+    <string name="simon_says_red">vermell</string>
+    <string name="simon_says_green">verd</string>
+    <string name="play">JUGAR</string>
+    <string name="simon_says_full">Full simon says</string>
 </resources>
