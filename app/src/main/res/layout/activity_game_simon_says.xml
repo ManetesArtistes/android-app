@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".games.simon_says.GameActivitySimonSays">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="70sp"
+            android:fontFamily="@font/itim">
+        </TextView>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            >
+
+            <ImageButton
+                android:id="@+id/btnAmarillo"
+                android:background="@drawable/simon_says_yellow_button_off"
+                android:layout_width="@dimen/simonButton"
+                android:layout_height="@dimen/simonButton"
+                android:contentDescription="@string/simon_says_yellow">
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/btnAzul"
+                android:background="@drawable/simon_says_blue_button_off"
+                android:layout_width="@dimen/simonButton"
+                android:layout_height="@dimen/simonButton"
+                android:contentDescription="@string/simon_says_blue">
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/btnRojo"
+                android:background="@drawable/simon_says_red_button_off"
+                android:layout_width="@dimen/simonButton"
+                android:layout_height="@dimen/simonButton"
+                android:contentDescription="@string/simon_says_red">
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/btnVerde"
+                android:background="@drawable/simon_says_green_button_off"
+                android:layout_width="@dimen/simonButton"
+                android:layout_height="@dimen/simonButton"
+                android:contentDescription="@string/simon_says_green">
+            </ImageButton>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
