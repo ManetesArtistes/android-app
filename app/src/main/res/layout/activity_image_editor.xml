@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/containerImageView"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_weight="11">
+
+        <com.example.manetes_artistes_app.imageEditor.CanvasView
+            android:id="@+id/canvasView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+    <com.example.manetes_artistes_app.games.coloring_pages.colors.ColorPalette
+        android:id="@+id/colorPalette"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@drawable/background_colors"
+        />
+</LinearLayout>

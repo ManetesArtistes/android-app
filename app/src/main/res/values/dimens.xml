@@ -2,4 +2,6 @@
 <resources>
     <dimen name="simonButton">150dp</dimen>
     <dimen name="simonFull">300dp</dimen>
+    <dimen name="top_margin_firstcol">20dp</dimen>
+    <dimen name="backButton" />
 </resources>

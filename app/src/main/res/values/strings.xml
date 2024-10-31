@@ -8,4 +8,5 @@
     <string name="simon_says_green">verd</string>
     <string name="play">JUGAR</string>
     <string name="simon_says_full">Full simon says</string>
+    <string name="backButon" />
 </resources>
