@@ -31,6 +31,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".games.coloring_pages.activities.ImageEditorActivity"
+            android:label="Image Editor"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"
+            />
+        <activity
+            android:name=".games.coloring_pages.activities.ImageListActivity"
+            android:label="Image List"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"
+            />
     </application>
 
 </manifest>

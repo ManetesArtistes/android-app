@@ -1,4 +1,4 @@
-package com.example.manetesartistes_game.activities
+package com.example.manetes_artistes_app.games.coloring_pages.activities
 
 import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
@@ -8,14 +8,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
-import com.example.manetesartistes_game.R
-import com.example.manetesartistes_game.colors.ColorLoader
-import com.example.manetesartistes_game.colors.ColorPalette
-import com.example.manetesartistes_game.common.ActivitiesIntentKeys
-import com.example.manetesartistes_game.imageEditor.CanvasView
-import com.example.manetesartistes_game.imageEditor.Draw
+import com.example.manetes_artistes_app.R
+import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorLoader
+import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorPalette
+import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
+import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
+import com.example.manetes_artistes_app.imageEditor.CanvasView
+import com.example.manetes_artistes_app.imageEditor.Draw
 
-class ImageEditorActivity: AppCompatActivity() {
+class ImageEditorActivity: ImmersiveCompatActivity() {
 
     private var selectedColor: Int = Color.parseColor("#f59542")
     private var canvas: CanvasView? = null
@@ -23,14 +24,6 @@ class ImageEditorActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION       // Hides the navigation bar
-                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION  // Allows layout to expand under navigation
-                        or View.SYSTEM_UI_FLAG_FULLSCREEN          // Hides the status bar
-                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN   // Allows layout to expand under the status bar
-                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY    // Ensures that the UI stays hidden even after user interaction
-                )
-        setContentView(R.layout.activity_image_editor)
 
         try {
             val drawData: Draw? = intent.getSerializableExtra(ActivitiesIntentKeys.DRAW_DATA) as Draw?

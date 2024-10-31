@@ -1,4 +1,4 @@
-package com.example.manetesartistes_game.activities
+package com.example.manetes_artistes_app.games.coloring_pages.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,13 +6,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.manetesartistes_game.R
-import com.example.manetesartistes_game.common.ActivitiesIntentKeys
-import com.example.manetesartistes_game.imageEditor.Draw
-import com.example.manetesartistes_game.imageEditor.DrawLoader
-import com.example.manetesartistes_game.imageEditor.ImageListAdapter
+import com.example.manetes_artistes_app.R
+import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
+import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
+import com.example.manetes_artistes_app.imageEditor.Draw
+import com.example.manetes_artistes_app.imageEditor.DrawLoader
+import com.example.manetes_artistes_app.imageEditor.ImageListAdapter
 
-class ImageListActivity: AppCompatActivity() {
+class ImageListActivity: ImmersiveCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

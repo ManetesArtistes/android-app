@@ -1,4 +1,4 @@
-package com.example.manetesartistes_game.imageEditor
+package com.example.manetes_artistes_app.imageEditor
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.manetesartistes_game.R
+import com.example.manetes_artistes_app.R
 
 class ImageListAdapter(
     private val context: Context,
@@ -20,7 +20,6 @@ class ImageListAdapter(
         private val backgroundContainer: LinearLayout = itemView.findViewById(R.id.backgroundContainer)
 
         fun bind(draw: Draw) {
-            // Cargar la imagen blanca en el ImageView
             val whiteImageResId = context.resources.getIdentifier(draw.whiteImage, "drawable", context.packageName)
             if (whiteImageResId != 0) {
                 whiteImageView.setImageResource(whiteImageResId)
@@ -28,7 +27,6 @@ class ImageListAdapter(
                 println("White image not found: ${draw.whiteImage}")
             }
 
-            // Establecer el fondo del LinearLayout con la imagen de fondo
             val backgroundImageResId = context.resources.getIdentifier(draw.backgroundImage, "drawable", context.packageName)
             if (backgroundImageResId != 0) {
                 backgroundContainer.setBackgroundResource(backgroundImageResId)

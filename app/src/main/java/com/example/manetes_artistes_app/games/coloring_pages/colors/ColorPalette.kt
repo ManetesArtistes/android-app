@@ -1,4 +1,4 @@
-package com.example.manetesartistes_game.colors
+package com.example.manetes_artistes_app.games.coloring_pages.colors
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,7 +7,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.manetesartistes_game.R
+import com.example.manetes_artistes_app.games.coloring_pages.colors.Color
+import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorAdapter
+import com.example.manetes_artistes_app.R
 
 class ColorPalette @JvmOverloads constructor(
     context: Context,
@@ -19,10 +21,7 @@ class ColorPalette @JvmOverloads constructor(
     private var colors: List<Color> = listOf()
 
     init {
-        // Inflate the layout for this custom view
         LayoutInflater.from(context).inflate(R.layout.view_color_palette, this, true)
-
-        // Initialize the RecyclerView
         colorPaletteRecyclerView = findViewById(R.id.colorPaletteRecyclerView)
         setupRecyclerView()
     }
@@ -33,7 +32,6 @@ class ColorPalette @JvmOverloads constructor(
     }
 
     private fun setupRecyclerView() {
-        // Se configura el GridLayoutManager con 2 columnas
         val layoutManager = GridLayoutManager(context, 2)
         colorPaletteRecyclerView.layoutManager = layoutManager
         render()

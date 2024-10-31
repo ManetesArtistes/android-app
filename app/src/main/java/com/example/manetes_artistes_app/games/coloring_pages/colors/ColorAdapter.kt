@@ -1,17 +1,16 @@
-package com.example.manetesartistes_game.colors
+package com.example.manetes_artistes_app.games.coloring_pages.colors
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.manetesartistes_game.R
+import com.example.manetes_artistes_app.R
 
 class ColorAdapter(
     private val context: Context,
-    private val colors: List<Color>, // Assuming Color class has id, image, name, hex properties
+    private val colors: List<Color>,
     private val onColorSelected: (Int) -> Unit
 ) : RecyclerView.Adapter<ColorAdapter.ColorViewHolder>() {
 

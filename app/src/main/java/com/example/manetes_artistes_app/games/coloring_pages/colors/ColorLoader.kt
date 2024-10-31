@@ -1,7 +1,7 @@
-package com.example.manetesartistes_game.colors
+package com.example.manetes_artistes_app.games.coloring_pages.colors
 
 import android.content.Context
-import com.example.manetesartistes_game.R
+import com.example.manetes_artistes_app.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -11,7 +11,7 @@ object ColorLoader {
 
     // Load colors into the HashMap from JSON file
     fun loadColors(context: Context) {
-        if (colorsMap.isNotEmpty()) return // Return if already loaded
+        if (colorsMap.isNotEmpty()) return
 
         val inputStream = context.resources.openRawResource(R.raw.colors)
         val jsonString = inputStream.bufferedReader().use { it.readText() }

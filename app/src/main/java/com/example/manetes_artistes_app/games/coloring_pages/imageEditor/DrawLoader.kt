@@ -1,13 +1,12 @@
-package com.example.manetesartistes_game.imageEditor
+package com.example.manetes_artistes_app.imageEditor
 
 
 import android.content.Context
-import com.example.manetesartistes_game.R
+import com.example.manetes_artistes_app.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 object DrawLoader {
-    // HashMap to map IDs to Draw objects
     private val drawsMap: HashMap<Int, Draw> = HashMap()
     private var drawsList: List<Draw> = listOf()
 

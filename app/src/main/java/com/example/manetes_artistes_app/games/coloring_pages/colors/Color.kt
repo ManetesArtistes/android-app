@@ -1,4 +1,4 @@
-package com.example.manetesartistes_game.colors
+package com.example.manetes_artistes_app.games.coloring_pages.colors
 
 data class Color(
     val id: Int,

@@ -1,4 +1,4 @@
-package com.example.manetesartistes_game.imageEditor
+package com.example.manetes_artistes_app.imageEditor
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,7 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.get
 import androidx.core.graphics.set
-import com.example.manetesartistes_game.R
+import com.example.manetes_artistes_app.R
 import java.util.*
 
 @SuppressLint("ClickableViewAccessibility")
@@ -54,7 +54,6 @@ class CanvasView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        // Draw the updated bitmap on the canvas, centered
         canvasBitmap?.let {
             val left = (width - it.width) / 2f
             val top = (height - it.height) / 2f
