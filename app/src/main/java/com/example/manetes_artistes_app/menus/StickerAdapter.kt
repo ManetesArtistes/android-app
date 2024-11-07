@@ -5,32 +5,37 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manetes_artistes_app.R
+import com.example.manetes_artistes_app.imageEditor.Draw
 
-class AnimalsAdapter(
-    val context: Context,
-    val animals: List<Animal>
-) : RecyclerView.Adapter<AnimalsAdapter.AnimalViewHolder>() {
+class StickerAdapter(
+    private val context: Context,
+    private val stickers: List<Sticker>,
+    private val onStickerTouch: (Sticker) -> Unit
+) : RecyclerView.Adapter<StickerAdapter.StickerViewHolder>() {
 
-    inner class AnimalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imgAnimal: ImageButton = view.findViewById(R.id.animalButton)
+    inner class StickerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imgSticker: ImageButton = view.findViewById(R.id.stickerButton)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.animal_button, parent, false)
-        return AnimalViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickerViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.sticker_button, parent, false)
+        return StickerViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
-        val animal = animals[position]
-        val backgroundImageResId = context.resources.getIdentifier(animal.image, "drawable", context.packageName)
+    override fun onBindViewHolder(holder: StickerViewHolder, position: Int) {
+        val sticker = stickers[position]
+        val backgroundImageResId = context.resources.getIdentifier(sticker.image, "drawable", context.packageName)
         if (backgroundImageResId != 0) {
-            holder.imgAnimal.setBackgroundResource(backgroundImageResId)
+            holder.imgSticker.setBackgroundResource(backgroundImageResId)
+            holder.imgSticker.setOnClickListener {
+                onStickerTouch(sticker)
+            }
         } else {
-            println("Background image not found: ${animal.image}")
+            println("Background image not found: ${sticker.image}")
         }
     }
 
     override fun getItemCount(): Int {
-        return animals.size
+        return stickers.size
     }
 }

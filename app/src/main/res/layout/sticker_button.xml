@@ -2,8 +2,8 @@
 <ImageButton
     xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:id="@+id/animalButton"
-    android:layout_width="@dimen/backButton"
-    android:layout_height="@dimen/backButton"
-    android:contentDescription="@string/animal_button"
+    android:id="@+id/stickerButton"
+    android:layout_width="@dimen/stickerButton"
+    android:layout_height="@dimen/stickerButton"
+    android:contentDescription="@string/sticker_button"
     />

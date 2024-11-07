@@ -1,45 +1,45 @@
 package com.example.manetes_artistes_app.imageEditor
 
 
-import Animal
+import Sticker
 import android.content.Context
 import com.example.manetes_artistes_app.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-object AnimalLoader {
+object StickerLoader {
 
 
-    private val animalsMap: HashMap<Int, Animal> = HashMap()
-    private var animalsList: List<Animal> = listOf()
+    private val stickersMap: HashMap<Int, Sticker> = HashMap()
+    private var stickersList: List<Sticker> = listOf()
 
     // Load animals into the HashMap from JSON file
-    fun loadAnimals(context: Context) {
-        if (animalsMap.isNotEmpty()) return
+    fun loadStickers(context: Context) {
+        if (stickersMap.isNotEmpty()) return
 
-        val inputStream = context.resources.openRawResource(R.raw.animals)
+        val inputStream = context.resources.openRawResource(R.raw.stickers)
         val jsonString = inputStream.bufferedReader().use { it.readText() }
         val gson = Gson()
 
-        val animalListType = object : TypeToken<List<Animal>>() {}.type
-        animalsList = gson.fromJson(jsonString, animalListType)
-        println("++++++ animals list init +++++")
-        println(animalsList)
-        // Convert the List<Draw> to a HashMap<Int, Draw>
-        animalsMap.putAll(animalsList.associateBy { it.id })
-        println(animalsMap)
+        val stickerListType = object : TypeToken<List<Sticker>>() {}.type
+        stickersList = gson.fromJson(jsonString, stickerListType)
+        println("++++++ stickers list init +++++")
+        println(stickersList)
+        // Convert the List<Sticker> to a HashMap<Int, Sticker>
+        stickersMap.putAll(stickersList.associateBy { it.id })
+        println(stickersMap)
     }
 
 
-    // Function to get a draw by ID
-    fun getAnimalById(id: Int,context: Context): Animal? {
-        loadAnimals(context)
-        return animalsMap[id]
+    // Function to get a sticker by ID
+    fun getStickerById(id: Int, context: Context): Sticker? {
+        loadStickers(context)
+        return stickersMap[id]
     }
 
-    // Function to get all draws
-    fun getAllAnimals(context: Context): List<Animal> {
-        loadAnimals(context)
-        return animalsList
+    // Function to get all stickers
+    fun getAllStickers(context: Context): List<Sticker> {
+        loadStickers(context)
+        return stickersList
     }
 }

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="simonButton">150dp</dimen>
-    <dimen name="simonFull">300dp</dimen>
+    <dimen name="simonButton">300dp</dimen>
+    <dimen name="simonFull">500dp</dimen>
+    <dimen name="mainButtons">350dp</dimen>
+    <dimen name="simonHead">150dp</dimen>
+    <dimen name="backButton">100dp</dimen>
+    <dimen name="simonSpace">300dp</dimen>
+    <dimen name="backButtonMargin">50dp</dimen>
     <dimen name="top_margin_firstcol">20dp</dimen>
-    <dimen name="backButton" />
+    <dimen name="stickerButton">180dp</dimen>
 </resources>

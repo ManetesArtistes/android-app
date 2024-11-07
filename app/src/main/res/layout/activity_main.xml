@@ -7,35 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/onlyButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pintar"
-            android:id="@+id/pinta"/>
-
-        <Space
-            android:layout_width="50dp"
-            android:layout_height="50dp">
-
-        </Space>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Simon"
-            android:id="@+id/simo"/>
-
-    </LinearLayout>
-
-
-
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/background_with_kids"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

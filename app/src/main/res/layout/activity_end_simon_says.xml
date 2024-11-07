@@ -5,6 +5,35 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EndActivitySimonSays">
+    android:background="@drawable/background_black"
+    tools:context=".games.simon_says.activities.EndActivitySimonSays">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@drawable/background_black"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/score"
+            android:textSize="100sp"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:id="@+id/exitButton"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:background="@drawable/button"
+            android:layout_margin="25dp"
+            android:contentDescription="@string/exit">
+        </ImageButton>
+    </LinearLayout>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,6 @@ package com.example.manetes_artistes_app.imageEditor
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-
 data class Draw(
     val id: Int,
 

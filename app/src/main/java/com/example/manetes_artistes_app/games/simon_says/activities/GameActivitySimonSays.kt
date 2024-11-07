@@ -1,12 +1,16 @@
-package com.example.manetes_artistes_app.games.simon_says
+package com.example.manetes_artistes_app.games.simon_says.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
+import com.example.manetes_artistes_app.games.simon_says.SimonButton
+import com.example.manetes_artistes_app.games.simon_says.SimonGame
+import com.example.manetes_artistes_app.menus.MainMenuActivity
 
 class GameActivitySimonSays : ImmersiveCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,13 +25,12 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
         val lblScore = findViewById<TextView>(R.id.score)
         val backBtn = findViewById<ImageButton>(R.id.backBtn)
 
-        val game = SimonGame(simonYellowBtn, simonBlueBtn, simonRedBtn, simonGreenBtn, lblScore)
+        val game = SimonGame(simonYellowBtn, simonBlueBtn, simonRedBtn, simonGreenBtn, lblScore, onGameEnd = { endSimon() })
 
         game.newLevel()
 
-
         backBtn.setOnClickListener {
-            val intent = Intent(this, MainActivitySimonSays::class.java)
+            val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
 
@@ -50,5 +53,11 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
             simonGreenBtn.activate(game)
             game.check(4)
         }
+    }
+
+    private fun endSimon(){
+        val intent = Intent(this, EndActivitySimonSays::class.java)
+        startActivity(intent)
+        finish()
     }
 }

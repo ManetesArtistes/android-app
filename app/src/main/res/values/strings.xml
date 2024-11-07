@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">manetes_artistes_app</string>
+    <string name="app_name">Manetes Artistes</string>
 
 
     <string name="simon_says_yellow">groc</string>
@@ -8,5 +8,11 @@
     <string name="simon_says_green">verd</string>
     <string name="play">JUGAR</string>
     <string name="simon_says_full">Full simon says</string>
-    <string name="backButon" />
+    <string name="score">0</string>
+    <string name="backButon">Back button</string>
+    <string name="sticker_button">Sticker Button</string>
+    <string name="mainColoringButton">Main Coloring Button</string>
+    <string name="mainSimonButton">Main Simon Button</string>
+    <string name="changeStickerButton">Change Sticker Button</string>
+    <string name="exit">Exit</string>
 </resources>

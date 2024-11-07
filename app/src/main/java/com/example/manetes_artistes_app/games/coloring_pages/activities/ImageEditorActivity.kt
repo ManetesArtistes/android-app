@@ -21,9 +21,10 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     private var selectedColor: Int = Color.parseColor("#f59542")
     private var canvas: CanvasView? = null
     @SuppressLint("ClickableViewAccessibility")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_image_editor)
 
         try {
             val drawData: Draw? = intent.getSerializableExtra(ActivitiesIntentKeys.DRAW_DATA) as Draw?
@@ -33,13 +34,10 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
                 renderBackgroundImage(drawData.backgroundImage)
                 renderColorPalette(drawData)
             }
-
         }catch (e: Exception) {
             Log.e("Error", e.toString())
             Log.e("Error", e.stackTraceToString())
         }
-
-
     }
 
     private fun renderBackgroundImage(resourceString: String){
@@ -74,5 +72,4 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         selectedColor = color
         canvas?.setFillColor(selectedColor)
     }
-
 }

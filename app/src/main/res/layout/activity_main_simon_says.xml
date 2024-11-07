@@ -5,14 +5,27 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".games.simon_says.MainActivitySimonSays">
+    tools:context=".games.simon_says.activities.MainActivitySimonSays">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:background="@drawable/background_black"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/simonHead"
+            android:gravity="center_vertical">
+
+            <include layout="@layout/back_button"
+                android:layout_width="@dimen/backButton"
+                android:layout_height="@dimen/backButton"
+                android:layout_marginHorizontal="@dimen/backButtonMargin"/>
+
+        </LinearLayout>
 
         <ImageView
             android:layout_width="@dimen/simonFull"
@@ -21,24 +34,13 @@
             android:contentDescription="@string/simon_says_full">
         </ImageView>
 
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/play"
-            android:textSize="50sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white"
-            app:cornerRadius="15dp"
-            app:strokeColor="@color/black"
-            app:strokeWidth="3dp"
-            android:fontFamily="@font/itim">
-        </Button>
-
+        <ImageButton
+            android:id="@+id/playBtn"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:background="@drawable/button"
+            android:layout_margin="25dp"
+            android:contentDescription="@string/play">
+        </ImageButton>
     </LinearLayout>
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

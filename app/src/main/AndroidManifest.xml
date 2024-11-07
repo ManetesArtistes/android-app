@@ -6,43 +6,51 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Manetes_artistes_app"
+        android:theme="@style/Base.Theme.Manetes_artistes_app"
         tools:targetApi="31">
-
         <activity
-            android:name=".games.simon_says.GameActivitySimonSays"
-            android:exported="false" />
+            android:name=".menus.MainMenuActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
-            android:name=".games.simon_says.MainActivitySimonSays"
-            android:exported="false" />
+            android:name=".menus.StickerSelectorActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
-            android:name=".games.coloring_pages.MainActivityColoringPages"
-            android:exported="false" />
+            android:name=".games.simon_says.activities.GameActivitySimonSays"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".games.simon_says.activities.EndActivitySimonSays"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".games.simon_says.activities.MainActivitySimonSays"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".games.coloring_pages.activities.ImageEditorActivity"
+            android:exported="true"
+            android:label="Image Editor"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".games.coloring_pages.activities.ImageListActivity"
+            android:exported="true"
+            android:label="Image List"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".games.coloring_pages.activities.ImageEditorActivity"
-            android:label="Image Editor"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"
-            />
-        <activity
-            android:name=".games.coloring_pages.activities.ImageListActivity"
-            android:label="Image List"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"
-            />
     </application>
-
 </manifest>

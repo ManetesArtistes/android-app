@@ -16,7 +16,6 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
-
     <com.example.manetes_artistes_app.games.coloring_pages.colors.ColorPalette
         android:id="@+id/colorPalette"
         android:layout_width="0dp"

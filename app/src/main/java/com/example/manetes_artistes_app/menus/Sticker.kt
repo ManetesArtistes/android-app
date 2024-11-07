@@ -1,7 +1,7 @@
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class Animal(
+data class Sticker(
     val id: Int,
 
     @SerializedName("name")

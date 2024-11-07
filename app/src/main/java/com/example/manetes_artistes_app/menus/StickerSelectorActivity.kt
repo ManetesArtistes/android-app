@@ -1,7 +1,7 @@
 package com.example.manetes_artistes_app.menus
 
-import Animal
-import AnimalsAdapter
+import Sticker
+import StickerAdapter
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -11,30 +11,33 @@ import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.games.coloring_pages.activities.ImageEditorActivity
-import com.example.manetes_artistes_app.imageEditor.AnimalLoader
+import com.example.manetes_artistes_app.imageEditor.StickerLoader
 import com.example.manetes_artistes_app.imageEditor.DrawLoader
 
-class AnimalSelectorActivity : ImmersiveCompatActivity() {
+class StickerSelectorActivity : ImmersiveCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_animal_selector)
+        setContentView(R.layout.activity_sticker_selector)
         setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
         val listView = findViewById<RecyclerView>(R.id.animalSelectorView)
         val layoutManager = GridLayoutManager(this, 4)
-        val animals = AnimalLoader.getAllAnimals(this)
+        val stickers = StickerLoader.getAllStickers(this)
 
         listView.layoutManager = layoutManager
-        listView.adapter = AnimalsAdapter(this, animals)
+        listView.adapter = StickerAdapter(this, stickers)
+        { selectedSticker ->
+            onStickerSelected(selectedSticker)
+        }
     }
 
-    private fun onAnimalSelected(animal: Animal) {
-        val intent = Intent(this, ImageEditorActivity::class.java)
-        DrawLoader.loadDraws(this)
-        intent.putExtra(ActivitiesIntentKeys.ANIMAL, animal)
+    private fun onStickerSelected(sticker: Sticker) {
+        val intent = Intent(this, MainMenuActivity::class.java)
+        StickerLoader.loadStickers(this)
+        intent.putExtra(ActivitiesIntentKeys.STICKER, sticker)
         startActivity(intent)
     }
 }

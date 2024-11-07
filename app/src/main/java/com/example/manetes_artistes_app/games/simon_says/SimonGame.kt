@@ -6,7 +6,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.manetes_artistes_app.R
+import com.example.manetes_artistes_app.games.simon_says.activities.GameActivitySimonSays
 import kotlin.random.Random
+
 
 
 class SimonGame(
@@ -14,7 +16,8 @@ class SimonGame(
     val simonBlueBtn: SimonButton,
     val simonRedBtn: SimonButton,
     val simonGreenBtn: SimonButton,
-    val lblScore: TextView
+    val lblScore: TextView,
+    val onGameEnd: () -> Unit
 ){
     var moves: ArrayList<Int> = ArrayList()
     private var currentPlay = 0
@@ -72,9 +75,7 @@ class SimonGame(
                 enableButtons()
             },1100)
         }else{
-            disableButtons()
-            lblScore.text = "GAMEOVER"
+            onGameEnd()
         }
     }
-
 }
