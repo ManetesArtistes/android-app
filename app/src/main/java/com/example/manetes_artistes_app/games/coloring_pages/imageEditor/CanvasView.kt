@@ -70,25 +70,40 @@ class CanvasView @JvmOverloads constructor(
         val queue: Queue<Pair<Int, Int>> = LinkedList()
         queue.add(Pair(x, y))
 
+        val chunkSize = 500 // You can adjust this based on your needs
+        val processedPixels = mutableSetOf<Pair<Int, Int>>()
+
         while (queue.isNotEmpty()) {
-            val (cx, cy) = queue.remove()
+            var processedCount = 0
+            val batch = mutableListOf<Pair<Int, Int>>()
 
-            if (cx !in 0 until bitmap.width || cy !in 0 until bitmap.height) continue
+            // Process up to chunkSize pixels at a time
+            while (queue.isNotEmpty() && processedCount < chunkSize) {
+                val (cx, cy) = queue.remove()
+                if (cx !in 0 until bitmap.width || cy !in 0 until bitmap.height || processedPixels.contains(Pair(cx, cy))) continue
 
-            val currentColor = bitmap[cx, cy]
-            if (currentColor == Color.BLACK || !isColorInTolerance(targetColor, currentColor)) continue
+                val currentColor = bitmap[cx, cy]
+                if (currentColor == Color.BLACK || !isColorInTolerance(targetColor, currentColor)) continue
 
-            if (!isColorInTolerance(targetColor, currentColor)) continue
-            if (Color.alpha(currentColor) == 0) continue // Skip transparent pixels
+                if (!isColorInTolerance(targetColor, currentColor)) continue
+                if (Color.alpha(currentColor) == 0) continue // Skip transparent pixels
 
-            bitmap[cx, cy] = fillColor
+                bitmap[cx, cy] = fillColor
+                processedPixels.add(Pair(cx, cy))
+                batch.add(Pair(cx, cy))
 
-            queue.add(Pair(cx + 1, cy))
-            queue.add(Pair(cx - 1, cy))
-            queue.add(Pair(cx, cy + 1))
-            queue.add(Pair(cx, cy - 1))
+                // Enqueue neighbors for the next batch
+                queue.add(Pair(cx + 1, cy))
+                queue.add(Pair(cx - 1, cy))
+                queue.add(Pair(cx, cy + 1))
+                queue.add(Pair(cx, cy - 1))
+
+                processedCount++
+            }
+
         }
     }
+
 
     private fun isColorInTolerance(targetColor: Int, currentColor: Int): Boolean {
         val targetRed = Color.red(targetColor)

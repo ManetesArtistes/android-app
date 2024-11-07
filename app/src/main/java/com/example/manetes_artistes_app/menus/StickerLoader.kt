@@ -19,7 +19,7 @@ object StickerLoader {
 
         val inputStream = context.resources.openRawResource(R.raw.stickers)
         val jsonString = inputStream.bufferedReader().use { it.readText() }
-        val gson = Gson()
+        val gson = Gson();
 
         val stickerListType = object : TypeToken<List<Sticker>>() {}.type
         stickersList = gson.fromJson(jsonString, stickerListType)
