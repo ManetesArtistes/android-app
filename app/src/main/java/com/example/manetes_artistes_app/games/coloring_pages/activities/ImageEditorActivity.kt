@@ -1,12 +1,14 @@
 package com.example.manetes_artistes_app.games.coloring_pages.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorLoader
@@ -15,6 +17,7 @@ import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.imageEditor.CanvasView
 import com.example.manetes_artistes_app.imageEditor.Draw
+import com.example.manetes_artistes_app.menus.MainMenuActivity
 
 class ImageEditorActivity: ImmersiveCompatActivity() {
 
@@ -34,10 +37,12 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
                 renderBackgroundImage(drawData.backgroundImage)
                 renderColorPalette(drawData)
             }
+            addOnSaveClickListener()
         }catch (e: Exception) {
             Log.e("Error", e.toString())
             Log.e("Error", e.stackTraceToString())
         }
+
     }
 
     private fun renderBackgroundImage(resourceString: String){
@@ -55,6 +60,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     private fun renderColorPalette(draw: Draw){
         val colorPalette = findViewById<ColorPalette>(R.id.colorPalette)
         val colors = ColorLoader.getColorsByIds(draw.colors, this)
+
         colorPalette.setColors(colors)
          setSelectedColor(Color.parseColor(colors[0].hex))
         // Set the listener to handle color selection
@@ -66,6 +72,15 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         val resource = resources.getIdentifier(draw.coloredImage, "drawable", packageName)
         val bgResource = resources.getIdentifier(draw.squareBackgroundImage, "drawable", packageName)
         colorPalette.renderColorImage(resource, bgResource)
+    }
+
+    private fun addOnSaveClickListener(){
+        val doneButton = findViewById<ImageButton>(R.id.doneButton)
+
+        doneButton.setOnClickListener {
+            val intent = Intent(this, ImageListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun setSelectedColor(color: Int) {

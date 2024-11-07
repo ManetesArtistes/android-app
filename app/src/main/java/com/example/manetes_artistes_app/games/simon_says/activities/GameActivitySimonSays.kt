@@ -30,7 +30,7 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
         game.newLevel()
 
         backBtn.setOnClickListener {
-            val intent = Intent(this, MainMenuActivity::class.java)
+            val intent = Intent(this, MainActivitySimonSays::class.java)
             startActivity(intent)
         }
 

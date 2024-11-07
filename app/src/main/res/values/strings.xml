@@ -15,4 +15,6 @@
     <string name="mainSimonButton">Main Simon Button</string>
     <string name="changeStickerButton">Change Sticker Button</string>
     <string name="exit">Exit</string>
+    <string name="done">done</string>
+    <string name="selecciona">SELECCIONA UN DIBUIX</string>
 </resources>
