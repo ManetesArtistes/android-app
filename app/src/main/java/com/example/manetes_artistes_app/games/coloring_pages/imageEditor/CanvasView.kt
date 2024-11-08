@@ -83,9 +83,9 @@ class CanvasView @JvmOverloads constructor(
                 if (cx !in 0 until bitmap.width || cy !in 0 until bitmap.height || processedPixels.contains(Pair(cx, cy))) continue
 
                 val currentColor = bitmap[cx, cy]
-                if (currentColor == Color.BLACK || !isColorInTolerance(targetColor, currentColor)) continue
+                if (currentColor == Color.BLACK) continue
 
-                if (!isColorInTolerance(targetColor, currentColor)) continue
+                if(targetColor != currentColor) continue
                 if (Color.alpha(currentColor) == 0) continue // Skip transparent pixels
 
                 bitmap[cx, cy] = fillColor
@@ -104,24 +104,7 @@ class CanvasView @JvmOverloads constructor(
         }
     }
 
-
-    private fun isColorInTolerance(targetColor: Int, currentColor: Int): Boolean {
-        val targetRed = Color.red(targetColor)
-        val targetGreen = Color.green(targetColor)
-        val targetBlue = Color.blue(targetColor)
-
-        val currentRed = Color.red(currentColor)
-        val currentGreen = Color.green(currentColor)
-        val currentBlue = Color.blue(currentColor)
-
-        val toleranceValue = (255 * tolerance).toInt()
-
-        return (Math.abs(targetRed - currentRed) <= toleranceValue) &&
-                (Math.abs(targetGreen - currentGreen) <= toleranceValue) &&
-                (Math.abs(targetBlue - currentBlue) <= toleranceValue)
-    }
-
-     fun setFillColor(color: Int){
+    fun setFillColor(color: Int){
         fillColor = color
     }
 }
