@@ -65,12 +65,12 @@ class CanvasView @JvmOverloads constructor(
     private fun floodFill(x: Int, y: Int, targetColor: Int) {
         val bitmap = canvasBitmap ?: return
 
-        if (targetColor == fillColor) return // Skip if target is already filled
+        if (targetColor == fillColor) return
 
         val queue: Queue<Pair<Int, Int>> = LinkedList()
         queue.add(Pair(x, y))
 
-        val chunkSize = 500 // You can adjust this based on your needs
+        val chunkSize = 1000
         val processedPixels = mutableSetOf<Pair<Int, Int>>()
 
         while (queue.isNotEmpty()) {
