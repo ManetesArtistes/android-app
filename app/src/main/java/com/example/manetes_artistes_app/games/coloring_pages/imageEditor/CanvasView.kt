@@ -19,7 +19,8 @@ class CanvasView @JvmOverloads constructor(
     private var bitmap: Bitmap? = null
     private var canvasBitmap: Bitmap? = null
     private var fillColor = Color.WHITE
-    private val tolerance = 0.20f
+    private var activityBitmapStore: ((Bitmap) -> Unit)? = null
+
 
     init {
         bitmap?.let {
@@ -39,6 +40,8 @@ class CanvasView @JvmOverloads constructor(
                         invalidate()
                     }
                 }
+
+                activityBitmapStore?.invoke(canvasBitmap!!)
                 true
             } else {
                 false
@@ -46,7 +49,8 @@ class CanvasView @JvmOverloads constructor(
         }
     }
 
-    fun initCanvas(bitmap: Bitmap){
+    fun initCanvas(bitmap: Bitmap, activityBitmapStore: ((Bitmap) -> Unit)? = null) {
+        this.activityBitmapStore = activityBitmapStore
         this.bitmap = bitmap
         this.canvasBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
         invalidate()
