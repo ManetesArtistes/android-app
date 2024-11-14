@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manetes_artistes_app.R
@@ -12,7 +11,7 @@ import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.imageEditor.Draw
 import com.example.manetes_artistes_app.imageEditor.DrawLoader
-import com.example.manetes_artistes_app.imageEditor.ImageListAdapter
+import com.example.manetes_artistes_app.games.coloring_pages.imageEditor.ImageListAdapter
 import com.example.manetes_artistes_app.menus.MainMenuActivity
 import com.example.manetes_artistes_app.user.User
 

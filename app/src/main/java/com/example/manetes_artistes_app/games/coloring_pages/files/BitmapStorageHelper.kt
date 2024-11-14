@@ -52,6 +52,10 @@ class BitmapStorageHelper(private val context: Context) {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
             outputStream.flush()
             outputStream.close()
+
+            // save on ftp
+            val ftpClient = FtpClient()
+            ftpClient.uploadBitmap(bitmap, context, "$id.png")
             true
         } catch (e: IOException) {
             e.printStackTrace()

@@ -1,4 +1,4 @@
-package com.example.manetes_artistes_app.imageEditor
+package com.example.manetes_artistes_app.games.coloring_pages.imageEditor
 
 import android.content.Context
 import android.content.res.Resources
@@ -12,6 +12,8 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.games.coloring_pages.files.BitmapStorageHelper
+import com.example.manetes_artistes_app.games.coloring_pages.files.FtpClient
+import com.example.manetes_artistes_app.imageEditor.Draw
 import com.example.manetes_artistes_app.user.User
 
 class ImageListAdapter(
@@ -28,11 +30,9 @@ class ImageListAdapter(
         private val backgroundContainer: LinearLayout = itemView.findViewById(R.id.backgroundContainer)
 
         fun bind(draw: Draw) {
-
             val resource = resources.getIdentifier(draw.whiteImage, "drawable", packageName)
             val defaultBitmap = BitmapFactory.decodeResource(resources, resource)
             val bitmap: Bitmap = BitmapStorageHelper(context).loadUserBitmap(user,draw, defaultBitmap)
-            val whiteImageResId = context.resources.getIdentifier(draw.whiteImage, "drawable", context.packageName)
             whiteImageView.setImageBitmap(bitmap)
 
             val backgroundImageResId = context.resources.getIdentifier(draw.backgroundImage, "drawable", context.packageName)
