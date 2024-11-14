@@ -35,7 +35,13 @@ class ImageListActivity: ImmersiveCompatActivity() {
 
         val draws = DrawLoader.getAllDraws(this)
         listView.layoutManager = layoutManager
-        listView.adapter = ImageListAdapter(this, draws)
+        listView.adapter = ImageListAdapter(
+            this,
+            draws,
+            user,
+            resources,
+            packageName
+        )
         { selectedDraw ->
             onDrawSelected(selectedDraw)
         }

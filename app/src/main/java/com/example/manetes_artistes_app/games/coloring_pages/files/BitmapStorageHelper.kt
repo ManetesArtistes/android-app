@@ -18,7 +18,7 @@ class BitmapStorageHelper(private val context: Context) {
         return saveBitmapAsPng(bitmap, id)
     }
 
-    fun loadUserBitmap(user: User, draw: Draw, defaultBitmap: Bitmap): Bitmap? {
+    fun loadUserBitmap(user: User, draw: Draw, defaultBitmap: Bitmap): Bitmap {
         val id = generateId(user, draw)
         println("Image loaded from id: $id")
 
