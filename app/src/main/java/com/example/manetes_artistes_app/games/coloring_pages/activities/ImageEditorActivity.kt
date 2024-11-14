@@ -20,6 +20,7 @@ import com.example.manetes_artistes_app.games.coloring_pages.files.BitmapStorage
 import com.example.manetes_artistes_app.imageEditor.CanvasView
 import com.example.manetes_artistes_app.imageEditor.Draw
 import com.example.manetes_artistes_app.menus.MainMenuActivity
+import com.example.manetes_artistes_app.user.User
 
 
 class ImageEditorActivity: ImmersiveCompatActivity() {
@@ -27,12 +28,13 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     private var selectedColor: Int = Color.parseColor("#f59542")
     private var canvas: CanvasView? = null
     private var bitmap: Bitmap? = null
+    private var user: User = User(0, 0, 0)
     @SuppressLint("ClickableViewAccessibility")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_editor)
-
+        user = User.extractUserFromIntent(intent)
         try {
             val drawData: Draw? = intent.getSerializableExtra(ActivitiesIntentKeys.DRAW_DATA) as Draw?
 
@@ -55,23 +57,15 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         containerImageView.setBackgroundResource(resource)
     }
 
-    private fun renderDrawWhiteImage(resourceString: String, drawData: Draw?){
-        val resource = resources.getIdentifier(resourceString, "drawable", packageName)
-        canvas = findViewById(R.id.canvasView)
-        var initialBitmap: Bitmap? = null;
-        val loadExistingBitmap = BitmapStorageHelper(this).loadBitmapById(drawData?.id.toString())
+    private fun renderDrawWhiteImage(resourceString: String, draw: Draw){
+        val resource = resources.getIdentifier(draw.whiteImage, "drawable", packageName)
         val defaultBitmap = BitmapFactory.decodeResource(resources, resource)
-        if(loadExistingBitmap != null){
-            println("load existing bitmap")
-            initialBitmap = loadExistingBitmap
-        }else{
-            println("load default bitmap")
-            initialBitmap = defaultBitmap
-        }
-        this.bitmap = initialBitmap
+        bitmap = BitmapStorageHelper(this).loadUserBitmap(user,draw, defaultBitmap)
 
-        canvas?.initCanvas(initialBitmap!!) {
-            this.bitmap = it
+        canvas = findViewById(R.id.canvasView)
+
+        canvas?.initCanvas(bitmap!!) {
+            bitmap = it
         }
     }
 
@@ -100,13 +94,14 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         doneButton.setOnClickListener {
             if(drawData != null){
                 val bitmapStorage = BitmapStorageHelper(this)
-                bitmapStorage.saveBitmapAsPng(bitmap!!, drawData?.id.toString())
+                bitmapStorage.storeUserBitmap(user!!, bitmap!!, drawData)
                 println("Image saved")
             }else{
                 println("Error saving image")
             }
 
             val intent = Intent(this, ImageListActivity::class.java)
+            intent.putExtra(ActivitiesIntentKeys.USER, user)
             startActivity(intent)
         }
     }
