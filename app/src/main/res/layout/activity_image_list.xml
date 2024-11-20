@@ -25,17 +25,25 @@
                 android:layout_height="@dimen/backButton"
                 android:layout_marginHorizontal="@dimen/backButtonMargin"/>
 
-            <TextView
-                android:id="@+id/imageListTitle"
+            <LinearLayout
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="@string/selecciona"
-                android:textSize="60sp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/itim">
-            </TextView>
+                android:background="@drawable/select_draw_text_background"
+                >
+                <TextView
+                    android:id="@+id/imageListTitle"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/selecciona"
+                    android:textSize="60sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/itim">
+                </TextView>
+            </LinearLayout>
+
             <Space
                 android:layout_width="@dimen/backButton"
                 android:layout_height="@dimen/backButton"
@@ -43,12 +51,18 @@
             </Space>
         </TableRow>
     </TableLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/imagesListReciclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        />
+    <LinearLayout
+        android:layout_width="1200dp"
+        android:layout_height="630dp"
+        android:gravity="center"
+        android:background="@drawable/image_list_background">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/imagesListReciclerView"
+            android:layout_width="1150dp"
+            android:layout_height="580dp"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
 </LinearLayout>
 
 
