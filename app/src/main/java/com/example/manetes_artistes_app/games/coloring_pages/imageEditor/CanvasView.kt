@@ -74,7 +74,7 @@ class CanvasView @JvmOverloads constructor(
         val queue: Queue<Pair<Int, Int>> = LinkedList()
         queue.add(Pair(x, y))
 
-        val chunkSize = 1000
+        val chunkSize = 200
         val processedPixels = mutableSetOf<Pair<Int, Int>>()
 
         while (queue.isNotEmpty()) {

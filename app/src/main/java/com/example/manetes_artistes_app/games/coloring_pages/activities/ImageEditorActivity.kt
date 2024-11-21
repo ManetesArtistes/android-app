@@ -17,6 +17,8 @@ import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorPalette
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.games.coloring_pages.files.BitmapStorageHelper
+import com.example.manetes_artistes_app.games.coloring_pages.stats.DrawStat
+import com.example.manetes_artistes_app.games.coloring_pages.stats.StatsState
 import com.example.manetes_artistes_app.imageEditor.CanvasView
 import com.example.manetes_artistes_app.imageEditor.Draw
 import com.example.manetes_artistes_app.menus.MainMenuActivity
@@ -30,14 +32,20 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     private var bitmap: Bitmap? = null
     private var user: User = User(0, 0, 0)
     @SuppressLint("ClickableViewAccessibility")
-
+    private var drawStat: DrawStat = DrawStat(
+        0,
+        (System.currentTimeMillis() / 1000).toInt(),
+        0,
+        0,
+        0
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_editor)
         user = User.extractUserFromIntent(intent)
         try {
             val drawData: Draw? = intent.getSerializableExtra(ActivitiesIntentKeys.DRAW_DATA) as Draw?
-
+            drawStat.draw_id = drawData!!.id
             if (drawData != null) {
                 renderDrawWhiteImage(drawData.whiteImage, drawData)
                 renderBackgroundImage(drawData.backgroundImage)
@@ -100,6 +108,13 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
                 println("Error saving image")
             }
 
+            // Save draw stat
+            drawStat.endTimestamp = (System.currentTimeMillis() / 1000).toInt()
+            drawStat.durationSeconds = drawStat.startTimestamp - drawStat.endTimestamp
+            // Store the draw stat
+            StatsState.addStat(drawStat,  user!!)
+
+            // return to list image activity
             val intent = Intent(this, ImageListActivity::class.java)
             intent.putExtra(ActivitiesIntentKeys.USER, user)
             startActivity(intent)
@@ -109,5 +124,6 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     fun setSelectedColor(color: Int) {
         selectedColor = color
         canvas?.setFillColor(selectedColor)
+        drawStat.usedColorsAmount += 1
     }
 }
