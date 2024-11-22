@@ -15,7 +15,7 @@ object StatsState {
     private const val FTP_DIRECTORY: String = "/stats/"
 
     fun initializeCenters(context: Context) {
-        loadCentersFromFile(context) // Pass the context to load the data
+        loadCentersFromFile(context)
     }
 
     fun addStat(draw: DrawStat, context: Context) {
