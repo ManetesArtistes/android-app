@@ -28,7 +28,7 @@ object StatsState {
         val uniqueId = generateDeviceUniqueIdentifier(context)
         val file: File = saveJsonToFile(context,json, "stats_${uniqueId}.json")
         val ftpClient = FtpClient()
-        ftpClient.uploadFileToFtp(file, "/json/")
+        ftpClient.uploadFileToFtp(file, "/stats/")
     }
 
     fun addScore(score: Int,user: User, context: Context) {
