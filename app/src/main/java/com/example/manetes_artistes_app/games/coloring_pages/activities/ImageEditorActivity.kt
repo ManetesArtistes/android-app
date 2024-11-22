@@ -112,7 +112,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
             drawStat.endTimestamp = (System.currentTimeMillis() / 1000).toInt()
             drawStat.durationSeconds = drawStat.startTimestamp - drawStat.endTimestamp
             // Store the draw stat
-            StatsState.addStat(drawStat,  user!!)
+            StatsState.addStat(drawStat,  user!!, this)
 
             // return to list image activity
             val intent = Intent(this, ImageListActivity::class.java)

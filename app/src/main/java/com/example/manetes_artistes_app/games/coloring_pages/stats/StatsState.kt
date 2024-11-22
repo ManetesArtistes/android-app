@@ -1,11 +1,16 @@
 package com.example.manetes_artistes_app.games.coloring_pages.stats
 
+import android.content.Context
+import com.example.manetes_artistes_app.games.coloring_pages.files.FtpClient
+import com.example.manetes_artistes_app.games.coloring_pages.utils.generateDeviceUniqueIdentifier
+import com.example.manetes_artistes_app.games.coloring_pages.utils.saveJsonToFile
 import com.example.manetes_artistes_app.games.coloring_pages.utils.toJson
 import com.example.manetes_artistes_app.user.User
+import java.io.File
 
 object StatsState {
     var centers: MutableList<Center> = mutableListOf()
-    fun addStat(draw: DrawStat, user: User) {
+    fun addStat(draw: DrawStat, user: User, context: Context) {
         val center = centers.find { it.center_id == user.centerId } ?: Center(user.centerId,).apply { centers.add(this) }
 
         val group = center.groups.find { it.group_id == user.groupId } ?: Group(user.groupId).apply { center.groups.add(this) }
@@ -15,17 +20,15 @@ object StatsState {
         )).apply { group.students.add(this) }
 
         student.stats.draws.add(draw)
-        uploadStatsOnFtp()
+        uploadStatsOnFtp(context)
     }
 
-    private fun uploadStatsOnFtp() {
-//        println("============================ UPLOADING STATS ============================")
-//        println("============================ UPLOADING STATS ============================")
-//        println(centers)
-//        println("============================ UPLOADING STATS ============================")
-//        println("============================ UPLOADING STATS ============================")
+    private fun uploadStatsOnFtp(context: Context) {
         var json: String = toJson(centers)
-//        println(json)
+        val uniqueId = generateDeviceUniqueIdentifier(context)
+        val file: File = saveJsonToFile(context,json, "stats_${uniqueId}.json")
+        val ftpClient = FtpClient()
+        ftpClient.uploadFileToFtp(file, "/json/")
     }
 
     fun addScore(score: Int, centerId: Int, groupId: Int, stickerId: Int) {
@@ -38,7 +41,7 @@ object StatsState {
         )).apply { group.students.add(this) }
 
         student.stats.score += score
-        uploadStatsOnFtp()
+//        uploadStatsOnFtp()
     }
 
 

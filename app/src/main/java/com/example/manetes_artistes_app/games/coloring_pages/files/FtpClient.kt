@@ -9,36 +9,88 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 
-class FtpClient() {
+import kotlinx.coroutines.*
+
+class FtpClient {
     private val ftpClient = FTPClient()
 
     val host = "ftp.onwindows-es.setupdns.net"
     val user = "dam_03@abp-politecnics.com"
     val password = "Politecnics2025"
 
-    private fun connect() {
+    // Connect to the FTP server
+    fun connect() {
         try {
-            ftpClient.connect(host)
-            val login = ftpClient.login(user, password)
-            if (!login) {
-                println("FTP login failed")
+            if (!ftpClient.isConnected) {
+                ftpClient.connect(host)
+                val login = ftpClient.login(user, password)
+                if (!login) {
+                    println("FTP login failed")
+                    disconnect() // Ensure clean disconnect on failure
+                } else {
+                    println("FTP login successful")
+                    ftpClient.enterLocalPassiveMode() // Set passive mode
+                    ftpClient.setFileType(FTP.BINARY_FILE_TYPE) // Set file type to binary
+                }
             } else {
-                println("FTP login successful")
-                ftpClient.enterLocalPassiveMode() // Set passive mode
-                ftpClient.setFileType(FTP.BINARY_FILE_TYPE) // Set file type to binary
+                println("Already connected to the FTP server")
             }
         } catch (e: IOException) {
             e.printStackTrace()
         }
     }
 
-    private fun disconnect() {
+    // Disconnect from the FTP server
+    fun disconnect() {
         try {
-            ftpClient.logout()
-            ftpClient.disconnect()
+            if (ftpClient.isConnected) {
+                ftpClient.logout()
+                ftpClient.disconnect()
+                println("Disconnected from FTP server")
+            }
         } catch (e: IOException) {
             e.printStackTrace()
         }
+    }
+
+    // Upload file to FTP server
+    fun uploadFileToFtp(file: File, path: String) {
+        Thread{
+            try {
+                if (!ftpClient.isConnected) {
+                    println("Not connected to FTP. Attempting to reconnect...")
+                    connect()
+                }
+
+                val inputStream: InputStream = file.inputStream()
+                val result = ftpClient.storeFile("${path}${file.name}", inputStream)
+                inputStream.close()
+                if (result) {
+                    println("File uploaded successfully at path ${path}${file.name}")
+                } else {
+                    println("File upload failed at path ${path}${file.name}")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }.start()
+    }
+
+    // Full process to save Bitmap, convert to PNG, and upload to FTP
+    fun uploadBitmap(bitmap: Bitmap, context: Context, filename: String) {
+        Thread {
+            try {
+                connect() // Ensure connection before the upload process
+                val file = saveBitmapToFile(bitmap, context, filename)
+                if (file != null) {
+                    uploadFileToFtp(file, "/images/")
+                } else {
+                    println("Failed to save the bitmap as PNG")
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }.start()
     }
 
     // Convert Bitmap to PNG and save as a file
@@ -61,38 +113,5 @@ class FtpClient() {
         }
         return null
     }
-
-    // Upload file to FTP server
-    fun uploadFileToFtp(file: File) {
-        try {
-            val inputStream: InputStream = file.inputStream()
-            val result = ftpClient.storeFile("/images/${file.name}", inputStream)
-            inputStream.close()
-            if (result) {
-                println("File uploaded successfully")
-            } else {
-                println("File upload failed")
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-    }
-
-    // Full process to save Bitmap, convert to PNG, and upload to FTP
-    fun uploadBitmap(bitmap: Bitmap, context: Context, filename: String) {
-        Thread {
-            try {
-                val file = saveBitmapToFile(bitmap, context, filename)
-                if (file != null) {
-                    connect()
-                    uploadFileToFtp(file)
-                    disconnect()
-                } else {
-                    println("Failed to save the bitmap as PNG")
-                }
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }.start()
-    }
 }
+
