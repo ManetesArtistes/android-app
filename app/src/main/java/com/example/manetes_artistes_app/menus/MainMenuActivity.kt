@@ -1,5 +1,6 @@
 package com.example.manetes_artistes_app.menus
 
+import Sticker
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
@@ -21,6 +22,10 @@ class MainMenuActivity : ImmersiveCompatActivity() {
         val coloringButton = findViewById<ImageButton>(R.id.mainColoringButton)
         val simonButton = findViewById<ImageButton>(R.id.mainSimonButton)
         val changeStickerButton = findViewById<ImageButton>(R.id.changeStickerButton)
+        val testKid = User(centerId = 1, groupId = 2, stickerId = 3)
+
+        val sticker = intent.getSerializableExtra(ActivitiesIntentKeys.STICKER) as Sticker
+        changeStickerButton.setBackgroundResource(resources.getIdentifier(sticker.image, "drawable", packageName))
 
         coloringButton.setOnClickListener {
             val intent = Intent(this, ImageListActivity::class.java)
@@ -29,12 +34,12 @@ class MainMenuActivity : ImmersiveCompatActivity() {
 
         simonButton.setOnClickListener {
             val intent = Intent(this, MainActivitySimonSays::class.java)
+            intent.putExtra(ActivitiesIntentKeys.USER, testKid)
             startActivity(intent)
         }
 
         changeStickerButton.setOnClickListener {
-            val intent = Intent(this, StickerSelectorActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 }

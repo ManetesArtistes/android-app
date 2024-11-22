@@ -5,5 +5,7 @@
     android:id="@+id/stickerButton"
     android:layout_width="@dimen/stickerButton"
     android:layout_height="@dimen/stickerButton"
+    android:layout_marginStart="64dp"
+    android:layout_marginVertical="7dp"
     android:contentDescription="@string/sticker_button"
     />

@@ -17,7 +17,7 @@ class SimonGame(
     val simonRedBtn: SimonButton,
     val simonGreenBtn: SimonButton,
     val lblScore: TextView,
-    val onGameEnd: () -> Unit
+    val onGameEnd: (score: Int) -> Unit
 ){
     var moves: ArrayList<Int> = ArrayList()
     private var currentPlay = 0
@@ -75,7 +75,7 @@ class SimonGame(
                 enableButtons()
             },1100)
         }else{
-            onGameEnd()
+            onGameEnd(this.score)
         }
     }
 }
