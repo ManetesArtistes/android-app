@@ -5,14 +5,14 @@ import com.example.manetes_artistes_app.common.stats.Center
 import com.google.gson.Gson
 import java.io.File
 
-fun toJson(centers: MutableList<Center>): String {
+fun centersToJson(centers: MutableList<Center>): String {
     val gson = Gson()
     return gson.toJson(centers)
 }
 
 fun saveJsonToFile(context: Context, json: String, fileName: String): File {
-    // Use the app's cache directory (writable and temporary storage)
-    val file = File(context.cacheDir, fileName)
+    // Use the app's internal storage directory (persistent storage)
+    val file = File(context.filesDir, fileName)
 
     // Write the JSON string to the file
     file.writeText(json)
@@ -20,6 +20,17 @@ fun saveJsonToFile(context: Context, json: String, fileName: String): File {
     // Return the File object for further use
     return file
 }
+
+fun loadJsonFromFile(context: Context, fileName: String): String? {
+    val file = File(context.filesDir, fileName)
+
+    return if (file.exists()) {
+        file.readText()
+    } else {
+        null
+    }
+}
+
 fun fromJson(json: String): MutableList<Center> {
     val gson = Gson()
     val centerListType = object : com.google.gson.reflect.TypeToken<MutableList<Center>>() {}.type

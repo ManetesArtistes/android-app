@@ -2,14 +2,16 @@ package com.example.manetes_artistes_app.common.stats
 
 import android.content.Context
 import com.example.manetes_artistes_app.common.files.FtpClient
-import com.example.manetes_artistes_app.games.coloring_pages.utils.generateDeviceUniqueIdentifier
+import com.example.manetes_artistes_app.games.coloring_pages.utils.centersToJson
+import com.example.manetes_artistes_app.games.coloring_pages.utils.generateStatsFileName
 import com.example.manetes_artistes_app.games.coloring_pages.utils.saveJsonToFile
-import com.example.manetes_artistes_app.games.coloring_pages.utils.toJson
 import com.example.manetes_artistes_app.user.User
 import java.io.File
 
 object StatsState {
-    var centers: MutableList<Center> = mutableListOf()
+    private var centers: MutableList<Center> = mutableListOf()
+    private const val FTP_DIRECTORY: String = "/stats/"
+
     fun addStat(draw: DrawStat, context: Context) {
         val center = centers.find { it.center_id == User.centerId } ?: Center(User.centerId,).apply { centers.add(this) }
 
@@ -25,11 +27,11 @@ object StatsState {
     }
 
     private fun uploadStatsOnFtp(context: Context) {
-        var json: String = toJson(centers)
-        val uniqueId = generateDeviceUniqueIdentifier(context)
-        val file: File = saveJsonToFile(context,json, "stats_${uniqueId}.json")
+        var json: String = centersToJson(centers)
+        val fileName = generateStatsFileName(context)
+        val file: File = saveJsonToFile(context,json, fileName)
         val ftpClient = FtpClient()
-        ftpClient.uploadFileToFtp(file, "/stats/")
+        ftpClient.uploadFileToFtp(file, FTP_DIRECTORY)
     }
 
     fun addScore(score: Int,context: Context) {
@@ -45,6 +47,4 @@ object StatsState {
         student.stats.score += score
         uploadStatsOnFtp(context)
     }
-
-
 }

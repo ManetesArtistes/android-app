@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
-import com.example.manetes_artistes_app.games.coloring_pages.stats.StatsState
+import com.example.manetes_artistes_app.common.stats.StatsState
 import com.example.manetes_artistes_app.games.simon_says.SimonButton
 import com.example.manetes_artistes_app.games.simon_says.SimonGame
 import com.example.manetes_artistes_app.menus.MainMenuActivity
@@ -59,7 +59,7 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
     private fun endSimon(score: Int){
         val intent = Intent(this, EndActivitySimonSays::class.java)
         startActivity(intent)
-        StatsState.addScore(score, User.extractUserFromIntent(intent), this)
+        StatsState.addScore(score, this)
         finish()
     }
 }

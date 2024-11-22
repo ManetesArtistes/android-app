@@ -18,13 +18,11 @@ class MainActivitySimonSays : ImmersiveCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main_simon_says)
 
-        val user = User.extractUserFromIntent(intent)
         val playBtn = findViewById<ImageButton>(R.id.playBtn)
         val backBtn = findViewById<ImageButton>(R.id.backBtn)
 
         playBtn.setOnClickListener {
             val intent = Intent(this, GameActivitySimonSays::class.java)
-            intent.putExtra(ActivitiesIntentKeys.USER, user)
             startActivity(intent)
         }
 
