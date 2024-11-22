@@ -14,9 +14,9 @@ import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorLoader
 import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorPalette
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
-import com.example.manetes_artistes_app.common.files.BitmapStorageHelper
-import com.example.manetes_artistes_app.common.stats.DrawStat
-import com.example.manetes_artistes_app.common.stats.StatsState
+import com.example.manetes_artistes_app.files.BitmapStorageHelper
+import com.example.manetes_artistes_app.stats.DrawStat
+import com.example.manetes_artistes_app.stats.StatsState
 import com.example.manetes_artistes_app.imageEditor.CanvasView
 import com.example.manetes_artistes_app.imageEditor.Draw
 

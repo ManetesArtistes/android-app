@@ -1,4 +1,4 @@
-package com.example.manetes_artistes_app.common.files
+package com.example.manetes_artistes_app.files
 
 import android.content.Context
 import android.graphics.Bitmap

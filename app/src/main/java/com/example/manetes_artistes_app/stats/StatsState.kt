@@ -1,10 +1,10 @@
-package com.example.manetes_artistes_app.common.stats
+package com.example.manetes_artistes_app.stats
 
 import android.content.Context
-import com.example.manetes_artistes_app.common.files.FtpClient
-import com.example.manetes_artistes_app.games.coloring_pages.utils.centersToJson
-import com.example.manetes_artistes_app.games.coloring_pages.utils.generateStatsFileName
-import com.example.manetes_artistes_app.games.coloring_pages.utils.saveJsonToFile
+import com.example.manetes_artistes_app.files.FtpClient
+import com.example.manetes_artistes_app.utils.centersToJson
+import com.example.manetes_artistes_app.utils.generateStatsFileName
+import com.example.manetes_artistes_app.utils.saveJsonToFile
 import com.example.manetes_artistes_app.user.User
 import java.io.File
 

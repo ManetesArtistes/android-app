@@ -11,8 +11,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manetes_artistes_app.R
-import com.example.manetes_artistes_app.common.files.BitmapStorageHelper
-import com.example.manetes_artistes_app.common.files.FtpClient
+import com.example.manetes_artistes_app.files.BitmapStorageHelper
+import com.example.manetes_artistes_app.files.FtpClient
 import com.example.manetes_artistes_app.imageEditor.Draw
 import com.example.manetes_artistes_app.user.User
 

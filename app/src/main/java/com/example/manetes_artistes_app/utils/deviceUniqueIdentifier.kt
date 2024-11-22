@@ -1,4 +1,4 @@
-package com.example.manetes_artistes_app.games.coloring_pages.utils
+package com.example.manetes_artistes_app.utils
 
 import android.content.Context
 import android.provider.Settings

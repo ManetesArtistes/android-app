@@ -1,4 +1,4 @@
-package com.example.manetes_artistes_app.common.stats
+package com.example.manetes_artistes_app.stats
 
 data class DrawStat(
     var draw_id: Int,
