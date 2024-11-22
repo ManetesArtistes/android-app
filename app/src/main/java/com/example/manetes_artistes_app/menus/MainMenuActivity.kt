@@ -22,7 +22,6 @@ class MainMenuActivity : ImmersiveCompatActivity() {
         val coloringButton = findViewById<ImageButton>(R.id.mainColoringButton)
         val simonButton = findViewById<ImageButton>(R.id.mainSimonButton)
         val changeStickerButton = findViewById<ImageButton>(R.id.changeStickerButton)
-        val testKid = User(centerId = 1, groupId = 2, stickerId = 3)
 
         val sticker = intent.getSerializableExtra(ActivitiesIntentKeys.STICKER) as Sticker
         changeStickerButton.setBackgroundResource(resources.getIdentifier(sticker.image, "drawable", packageName))
@@ -34,7 +33,6 @@ class MainMenuActivity : ImmersiveCompatActivity() {
 
         simonButton.setOnClickListener {
             val intent = Intent(this, MainActivitySimonSays::class.java)
-            intent.putExtra(ActivitiesIntentKeys.USER, testKid)
             startActivity(intent)
         }
 
