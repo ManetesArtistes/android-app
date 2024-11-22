@@ -4,11 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import com.example.manetes_artistes_app.R
@@ -16,13 +14,12 @@ import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorLoader
 import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorPalette
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
-import com.example.manetes_artistes_app.games.coloring_pages.files.BitmapStorageHelper
-import com.example.manetes_artistes_app.games.coloring_pages.stats.DrawStat
-import com.example.manetes_artistes_app.games.coloring_pages.stats.StatsState
+import com.example.manetes_artistes_app.common.files.BitmapStorageHelper
+import com.example.manetes_artistes_app.common.stats.DrawStat
+import com.example.manetes_artistes_app.common.stats.StatsState
 import com.example.manetes_artistes_app.imageEditor.CanvasView
 import com.example.manetes_artistes_app.imageEditor.Draw
-import com.example.manetes_artistes_app.menus.MainMenuActivity
-import com.example.manetes_artistes_app.user.User
+
 
 
 class ImageEditorActivity: ImmersiveCompatActivity() {
@@ -30,7 +27,6 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     private var selectedColor: Int = Color.parseColor("#f59542")
     private var canvas: CanvasView? = null
     private var bitmap: Bitmap? = null
-    private var user: User = User(0, 0, 0)
     @SuppressLint("ClickableViewAccessibility")
     private var drawStat: DrawStat = DrawStat(
         0,
@@ -42,7 +38,6 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_editor)
-        user = User.extractUserFromIntent(intent)
         try {
             val drawData: Draw? = intent.getSerializableExtra(ActivitiesIntentKeys.DRAW_DATA) as Draw?
             drawStat.draw_id = drawData!!.id
@@ -68,7 +63,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     private fun renderDrawWhiteImage(resourceString: String, draw: Draw){
         val resource = resources.getIdentifier(draw.whiteImage, "drawable", packageName)
         val defaultBitmap = BitmapFactory.decodeResource(resources, resource)
-        bitmap = BitmapStorageHelper(this).loadUserBitmap(user,draw, defaultBitmap)
+        bitmap = BitmapStorageHelper(this).loadUserBitmap(draw, defaultBitmap)
 
         canvas = findViewById(R.id.canvasView)
 
@@ -102,7 +97,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         doneButton.setOnClickListener {
             if(drawData != null){
                 val bitmapStorage = BitmapStorageHelper(this)
-                bitmapStorage.storeUserBitmap(user!!, bitmap!!, drawData)
+                bitmapStorage.storeUserBitmap(bitmap!!, drawData)
                 println("Image saved")
             }else{
                 println("Error saving image")
@@ -112,11 +107,10 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
             drawStat.endTimestamp = (System.currentTimeMillis() / 1000).toInt()
             drawStat.durationSeconds = drawStat.startTimestamp - drawStat.endTimestamp
             // Store the draw stat
-            StatsState.addStat(drawStat,  user!!, this)
+            StatsState.addStat(drawStat, this)
 
             // return to list image activity
             val intent = Intent(this, ImageListActivity::class.java)
-            intent.putExtra(ActivitiesIntentKeys.USER, user)
             startActivity(intent)
         }
     }

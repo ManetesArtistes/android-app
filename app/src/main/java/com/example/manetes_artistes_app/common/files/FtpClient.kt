@@ -1,4 +1,4 @@
-package com.example.manetes_artistes_app.games.coloring_pages.files
+package com.example.manetes_artistes_app.common.files
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -8,8 +8,6 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
-
-import kotlinx.coroutines.*
 
 class FtpClient {
     private val ftpClient = FTPClient()

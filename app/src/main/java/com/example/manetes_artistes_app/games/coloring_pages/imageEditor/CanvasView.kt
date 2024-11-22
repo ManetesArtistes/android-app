@@ -8,7 +8,6 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.get
 import androidx.core.graphics.set
-import com.example.manetes_artistes_app.R
 import java.util.*
 
 @SuppressLint("ClickableViewAccessibility")

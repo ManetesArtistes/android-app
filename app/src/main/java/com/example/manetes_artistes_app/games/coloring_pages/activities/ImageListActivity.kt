@@ -16,12 +16,10 @@ import com.example.manetes_artistes_app.menus.MainMenuActivity
 import com.example.manetes_artistes_app.user.User
 
 class ImageListActivity: ImmersiveCompatActivity() {
-    private var user: User = User(0, 0, 0)
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        user = User.extractUserFromIntent(intent)
         setContentView(R.layout.activity_image_list)
         setupRecyclerView()
         addBackClickListener()
@@ -37,7 +35,6 @@ class ImageListActivity: ImmersiveCompatActivity() {
         listView.adapter = ImageListAdapter(
             this,
             draws,
-            user,
             resources,
             packageName
         )
@@ -50,7 +47,6 @@ class ImageListActivity: ImmersiveCompatActivity() {
         val intent = Intent(this, ImageEditorActivity::class.java)
         DrawLoader.loadDraws(this)
         intent.putExtra(ActivitiesIntentKeys.DRAW_DATA, draw)
-        intent.putExtra(ActivitiesIntentKeys.USER, user)
         startActivity(intent)
     }
 
@@ -59,7 +55,6 @@ class ImageListActivity: ImmersiveCompatActivity() {
 
         doneButton.setOnClickListener {
             val intent = Intent(this, MainMenuActivity::class.java)
-            intent.putExtra(ActivitiesIntentKeys.USER, user)
             startActivity(intent)
         }
     }

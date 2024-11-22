@@ -23,9 +23,7 @@ class MainMenuActivity : ImmersiveCompatActivity() {
         val changeStickerButton = findViewById<ImageButton>(R.id.changeStickerButton)
 
         coloringButton.setOnClickListener {
-            val testKid = User(centerId = 1, groupId = 2, stickerId = 3)
             val intent = Intent(this, ImageListActivity::class.java)
-            intent.putExtra(ActivitiesIntentKeys.USER, testKid)
             startActivity(intent)
         }
 

@@ -1,4 +1,4 @@
-package com.example.manetes_artistes_app.games.coloring_pages.files
+package com.example.manetes_artistes_app.common.files
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -12,14 +12,14 @@ import java.io.IOException
 
 class BitmapStorageHelper(private val context: Context) {
 
-    fun storeUserBitmap(user: User, bitmap: Bitmap, draw: Draw): Boolean {
-        val id = generateId(user, draw)
+    fun storeUserBitmap(bitmap: Bitmap, draw: Draw): Boolean {
+        val id = generateId( draw)
         println("Image stored at id: $id")
         return saveBitmapAsPng(bitmap, id)
     }
 
-    fun loadUserBitmap(user: User, draw: Draw, defaultBitmap: Bitmap): Bitmap {
-        val id = generateId(user, draw)
+    fun loadUserBitmap(draw: Draw, defaultBitmap: Bitmap): Bitmap {
+        val id = generateId(draw)
         println("Image loaded from id: $id")
 
         var userBitmap: Bitmap? = loadBitmapById(id)
@@ -40,8 +40,8 @@ class BitmapStorageHelper(private val context: Context) {
         }
     }
 
-    private fun generateId(user: User, draw: Draw): String {
-        return "cid_${user.centerId}_gid_${user.groupId}_sid_${user.stickerId}_drawid_${draw.id}"
+    private fun generateId(draw: Draw): String {
+        return "cid_${User.centerId}_gid_${User.groupId}_sid_${User.stickerId}_drawid_${draw.id}"
     }
 
     private fun saveBitmapAsPng(bitmap: Bitmap, id: String): Boolean {

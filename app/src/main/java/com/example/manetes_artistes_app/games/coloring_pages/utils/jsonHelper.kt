@@ -1,7 +1,7 @@
 package com.example.manetes_artistes_app.games.coloring_pages.utils
 
 import android.content.Context
-import com.example.manetes_artistes_app.games.coloring_pages.stats.Center
+import com.example.manetes_artistes_app.common.stats.Center
 import com.google.gson.Gson
 import java.io.File
 

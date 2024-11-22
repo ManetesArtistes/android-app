@@ -1,4 +1,4 @@
-package com.example.manetes_artistes_app.games.coloring_pages.stats
+package com.example.manetes_artistes_app.common.stats
 
 data class DrawStat(
     var draw_id: Int,
