@@ -8,9 +8,11 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
+import com.example.manetes_artistes_app.games.coloring_pages.stats.StatsState
 import com.example.manetes_artistes_app.games.simon_says.SimonButton
 import com.example.manetes_artistes_app.games.simon_says.SimonGame
 import com.example.manetes_artistes_app.menus.MainMenuActivity
+import com.example.manetes_artistes_app.user.User
 
 class GameActivitySimonSays : ImmersiveCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +27,12 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
         val lblScore = findViewById<TextView>(R.id.score)
         val backBtn = findViewById<ImageButton>(R.id.backBtn)
 
-        val game = SimonGame(simonYellowBtn, simonBlueBtn, simonRedBtn, simonGreenBtn, lblScore, onGameEnd = { endSimon() })
+        val game = SimonGame(simonYellowBtn, simonBlueBtn, simonRedBtn, simonGreenBtn, lblScore) { score -> endSimon(score) }
 
         game.newLevel()
 
         backBtn.setOnClickListener {
-            val intent = Intent(this, MainActivitySimonSays::class.java)
-            startActivity(intent)
+            finish()
         }
 
         simonYellowBtn.button.setOnClickListener {
@@ -55,9 +56,10 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
         }
     }
 
-    private fun endSimon(){
+    private fun endSimon(score: Int){
         val intent = Intent(this, EndActivitySimonSays::class.java)
         startActivity(intent)
+        StatsState.addScore(score, User.extractUserFromIntent(intent), this)
         finish()
     }
 }

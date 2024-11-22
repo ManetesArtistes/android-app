@@ -24,7 +24,7 @@ object StatsState {
     }
 
     private fun uploadStatsOnFtp(context: Context) {
-        var json: String = toJson(centers)
+        val json: String = toJson(centers)
         val uniqueId = generateDeviceUniqueIdentifier(context)
         val file: File = saveJsonToFile(context,json, "stats_${uniqueId}.json")
         val ftpClient = FtpClient()
