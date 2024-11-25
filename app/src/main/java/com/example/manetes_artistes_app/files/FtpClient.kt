@@ -74,6 +74,50 @@ class FtpClient {
         }.start()
     }
 
+    fun downloadFileFromFtp(path: String): String? {
+        var jsonResult: String? = null
+        val latch = java.util.concurrent.CountDownLatch(1) // To synchronize threads
+
+        val thread = Thread {
+            try {
+                if (!ftpClient.isConnected) {
+                    println("Not connected to FTP. Attempting to reconnect...")
+                    connect()
+                }
+
+                println("First Attempting to retrieve file at path: $path")
+                val tempFile = File.createTempFile("temp_json", ".json")
+                val outputStream = FileOutputStream(tempFile)
+
+                println("Attempting to retrieve file at path: $path")
+                val result = ftpClient.retrieveFile(path, outputStream)
+                outputStream.close()
+
+                if (result) {
+                    println("File retrieved successfully: $path")
+                    jsonResult = tempFile.readText()
+                } else {
+                    println("Failed to retrieve the file at path: $path")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                latch.countDown()
+            }
+        }
+
+        thread.start()
+
+        try {
+            latch.await() // Wait for the worker thread to finish
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
+
+        return jsonResult
+    }
+
+
     // Full process to save Bitmap, convert to PNG, and upload to FTP
     fun uploadBitmap(bitmap: Bitmap, context: Context, filename: String) {
         Thread {

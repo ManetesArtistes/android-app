@@ -8,6 +8,9 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
+import com.example.manetes_artistes_app.data.Center
+import com.example.manetes_artistes_app.data.getCenters
+import com.example.manetes_artistes_app.files.FtpClient
 import com.example.manetes_artistes_app.games.simon_says.activities.MainActivitySimonSays
 import com.example.manetes_artistes_app.menus.StickerSelectorActivity
 import com.example.manetes_artistes_app.stats.StatsState
@@ -19,8 +22,8 @@ class MainActivity : ImmersiveCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         StatsState.initializeCenters(this)
-
         val btn = findViewById<ImageButton>(R.id.onlyButton)
+        val centers: List<Center> = getCenters()
 
         btn.setOnClickListener {
             val intent = Intent(this, StickerSelectorActivity::class.java)
