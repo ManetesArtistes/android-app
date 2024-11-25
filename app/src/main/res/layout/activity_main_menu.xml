@@ -5,49 +5,45 @@
     android:id="@+id/mainMenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_with_kids"
+    android:background="@drawable/background_black"
     tools:context=".menus.MainMenuActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/backButton"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-            <ImageButton
-                android:id="@+id/mainColoringButton"
-                android:layout_width="@dimen/mainButtons"
-                android:layout_height="@dimen/mainButtons"
-                android:contentDescription="@string/mainColoringButton"
-                android:background="@drawable/coloring"/>
-
-            <Space
-                android:layout_width="@dimen/simonSpace"
-                android:layout_height="@dimen/simonSpace"/>
-
-            <ImageButton
-                android:id="@+id/mainSimonButton"
-                android:layout_width="@dimen/mainButtons"
-                android:layout_height="@dimen/mainButtons"
-                android:contentDescription="@string/mainSimonButton"
-                android:background="@drawable/simon_says_full_on"/>
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/backButton"/>
+        android:gravity="center|bottom"
+        android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/changeStickerButton"
-            android:layout_width="@dimen/stickerButton"
-            android:layout_height="@dimen/stickerButton"
-            android:contentDescription="@string/changeStickerButton"
-            android:background="@drawable/pig"/>
+            android:id="@+id/mainColoringButton"
+            android:layout_width="@dimen/mainButtonsWidth"
+            android:layout_height="@dimen/mainButtonsHeight"
+            android:contentDescription="@string/mainColoringButton"
+            android:layout_marginBottom="-10dp"
+            android:background="@drawable/explorer_girl"/>
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center|top">
+            <Space
+                android:layout_height="30dp"
+                android:layout_width="match_parent"/>
+            <ImageButton
+                android:id="@+id/changeStickerButton"
+                android:layout_width="@dimen/stickerButton"
+                android:layout_height="@dimen/stickerButton"
+                android:contentDescription="@string/changeStickerButton"
+                android:layout_marginTop="33dp"
+                android:background="@drawable/pig"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/mainSimonButton"
+            android:layout_width="@dimen/mainButtonsWidth"
+            android:layout_height="@dimen/mainButtonsHeight"
+            android:contentDescription="@string/mainSimonButton"
+            android:layout_marginBottom="-10dp"
+            android:background="@drawable/explorer_boy"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

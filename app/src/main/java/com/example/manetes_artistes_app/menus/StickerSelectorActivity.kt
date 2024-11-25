@@ -24,7 +24,11 @@ class StickerSelectorActivity : ImmersiveCompatActivity() {
 
     private fun setupRecyclerView() {
         val listView = findViewById<RecyclerView>(R.id.animalSelectorView)
-        val layoutManager = GridLayoutManager(this, 4)
+        val layoutManager = object : GridLayoutManager(this, 4){
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
         val stickers = StickerLoader.getAllStickers(this)
 
         listView.layoutManager = layoutManager

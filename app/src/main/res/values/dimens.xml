@@ -2,10 +2,11 @@
 <resources>
     <dimen name="simonButton">300dp</dimen>
     <dimen name="simonFull">500dp</dimen>
-    <dimen name="mainButtons">350dp</dimen>
+    <dimen name="mainButtonsWidth">430dp</dimen>
+    <dimen name="mainButtonsHeight">596.5dp</dimen>
     <dimen name="simonHead">150dp</dimen>
     <dimen name="backButton">100dp</dimen>
-    <dimen name="simonSpace">300dp</dimen>
+    <dimen name="simonSpace">200dp</dimen>
     <dimen name="backButtonMargin">50dp</dimen>
     <dimen name="top_margin_firstcol">20dp</dimen>
     <dimen name="stickerButton">180dp</dimen>

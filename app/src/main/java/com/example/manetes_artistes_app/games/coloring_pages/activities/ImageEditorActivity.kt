@@ -72,8 +72,6 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         }
     }
 
-
-
     private fun renderColorPalette(draw: Draw){
         val colorPalette = findViewById<ColorPalette>(R.id.colorPalette)
         val colors = ColorLoader.getColorsByIds(draw.colors, this)
@@ -110,8 +108,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
             StatsState.addStat(drawStat, this)
 
             // return to list image activity
-            val intent = Intent(this, ImageListActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 

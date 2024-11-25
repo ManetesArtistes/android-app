@@ -25,13 +25,22 @@ class ImageListActivity: ImmersiveCompatActivity() {
         addBackClickListener()
     }
 
+    override fun onResume() {
+        super.onResume()
+        setupRecyclerView()
+    }
+
     private fun setupRecyclerView() {
         val listView = findViewById<RecyclerView>(R.id.imagesListReciclerView)
 
-        val layoutManager = GridLayoutManager(this, 4)
-
+        val layoutManager = object : GridLayoutManager(this, 4){
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
         val draws = DrawLoader.getAllDraws(this)
         listView.layoutManager = layoutManager
+
         listView.adapter = ImageListAdapter(
             this,
             draws,
@@ -54,8 +63,7 @@ class ImageListActivity: ImmersiveCompatActivity() {
         val doneButton = findViewById<ImageButton>(R.id.backBtn)
 
         doneButton.setOnClickListener {
-            val intent = Intent(this, MainMenuActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 }

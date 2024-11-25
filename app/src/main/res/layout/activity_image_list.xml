@@ -59,7 +59,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/imagesListReciclerView"
             android:layout_width="1150dp"
-            android:layout_height="580dp"
+            android:layout_height="581dp"
             android:layout_gravity="center"
             />
     </LinearLayout>

@@ -12,9 +12,7 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.files.BitmapStorageHelper
-import com.example.manetes_artistes_app.files.FtpClient
 import com.example.manetes_artistes_app.imageEditor.Draw
-import com.example.manetes_artistes_app.user.User
 
 class ImageListAdapter(
     private val context: Context,
@@ -27,6 +25,7 @@ class ImageListAdapter(
     inner class DrawViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val whiteImageView: ImageView = itemView.findViewById(R.id.whiteImageView)
         private val backgroundContainer: LinearLayout = itemView.findViewById(R.id.backgroundContainer)
+        private val drawItemContainer: LinearLayout = itemView.findViewById(R.id.drawItemContainer)
 
         fun bind(draw: Draw) {
             val resource = resources.getIdentifier(draw.whiteImage, "drawable", packageName)
@@ -36,7 +35,27 @@ class ImageListAdapter(
 
             val backgroundImageResId = context.resources.getIdentifier(draw.backgroundImage, "drawable", context.packageName)
             if (backgroundImageResId != 0) {
-                backgroundContainer.setBackgroundResource(backgroundImageResId)
+                when (draw.id) {
+                    1 -> {
+                        drawItemContainer.setBackgroundResource(R.drawable.border_top_left)
+                        backgroundContainer.setBackgroundResource(R.drawable.background_ocean_top_left)
+                    }
+                    4 -> {
+                        drawItemContainer.setBackgroundResource(R.drawable.border_top_right)
+                        backgroundContainer.setBackgroundResource(R.drawable.background_sky_top_right)
+                    }
+                    13 -> {
+                        drawItemContainer.setBackgroundResource(R.drawable.border_bottom_left)
+                        backgroundContainer.setBackgroundResource(R.drawable.background_ocean_bottom_left)
+                    }
+                    16 -> {
+                        drawItemContainer.setBackgroundResource(R.drawable.border_bottom_right)
+                        backgroundContainer.setBackgroundResource(R.drawable.background_jungle_bottom_right)
+                    }
+                    else -> {
+                        backgroundContainer.setBackgroundResource(backgroundImageResId)
+                    }
+                }
             } else {
                 println("Background image not found: ${draw.backgroundImage}")
             }
