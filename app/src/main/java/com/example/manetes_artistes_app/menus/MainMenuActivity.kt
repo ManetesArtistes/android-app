@@ -15,7 +15,6 @@ import com.example.manetes_artistes_app.stats.StatsState
 class MainMenuActivity : ImmersiveCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        StatsState.initializeCenters(this)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main_menu)
 

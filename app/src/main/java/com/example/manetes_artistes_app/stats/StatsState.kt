@@ -56,7 +56,9 @@ object StatsState {
 
     // Function to load centers from JSON file
     private fun loadCentersFromFile(context: Context) {
-        val json = loadJsonFromFile(context) // Load JSON using the passed context
+        val json = loadJsonFromFile(context)
+        println("++++++ centers json +++++")
+        println(json)
         if (!json.isNullOrEmpty()) {
             val gson = Gson()
             val type = object : TypeToken<MutableList<Center>>() {}.type
@@ -64,10 +66,9 @@ object StatsState {
         }
     }
 
-    // Function to load JSON from a file in internal storage (now accepts context)
     private fun loadJsonFromFile(context: Context): String? {
-        val fileName = "centers.json" // Name of the file you want to load from
-        val file = File(context.filesDir, fileName) // Use context.filesDir to access internal storage
+        val fileName = generateStatsFileName(context)
+        val file = File(context.filesDir, fileName)
         return if (file.exists()) {
             file.readText()
         } else {
