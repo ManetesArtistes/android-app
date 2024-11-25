@@ -32,7 +32,7 @@ object StatsState {
         uploadStatsOnFtp(context)
     }
 
-    private fun uploadStatsOnFtp(context: Context) {
+    fun uploadStatsOnFtp(context: Context) {
         val json: String = centersToJson(centers)
         val fileName = generateStatsFileName(context)
         val file: File = saveJsonToFile(context, json, fileName)

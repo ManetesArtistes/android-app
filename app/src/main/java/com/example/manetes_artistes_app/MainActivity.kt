@@ -22,6 +22,8 @@ class MainActivity : ImmersiveCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         StatsState.initializeCenters(this)
+        // initially upload the centers in case of wasnt uploaded by no-wifi
+        StatsState.uploadStatsOnFtp(this)
         val btn = findViewById<ImageButton>(R.id.onlyButton)
         val centers: List<Center> = getCenters()
 
