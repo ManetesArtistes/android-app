@@ -18,4 +18,7 @@
     <string name="done">done</string>
     <string name="selecciona">SELECCIONA UN DIBUIX</string>
     <string name="score_text">PUNTUACIÓ</string>
+    <string name="s_ha_produit_un_error_inesperat">S\'ha produit un error inesperat</string>
+    <string name="tornar_a_intentar">Tornar a intentar</string>
+    <string name="no_hi_ha_connexi_a_internet_connecta_t">No hi ha connexió a internet, connecta\'t</string>
 </resources>
