@@ -31,17 +31,32 @@
                     android:layout_height="@dimen/backButton"
                     android:layout_marginHorizontal="@dimen/backButtonMargin"/>
 
-                <TextView
-                    android:id="@+id/score"
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:text="@string/score"
-                    android:textSize="50sp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/itim">
-                </TextView>
+                    android:orientation="vertical"
+                    android:background="@drawable/simon_score_background">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_text"
+                        android:fontFamily="@font/itim"
+                        android:textColor="@color/white"
+                        android:textSize="45sp"/>
+                    <TextView
+                        android:id="@+id/score"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="@string/score"
+                        android:textSize="90sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/itim">
+                    </TextView>
+                </LinearLayout>
+
                 <Space
                     android:layout_width="@dimen/backButton"
                     android:layout_height="@dimen/backButton"

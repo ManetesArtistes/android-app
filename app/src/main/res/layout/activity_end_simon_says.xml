@@ -16,8 +16,10 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/simoneScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/score"
             android:text="@string/score"
             android:textSize="100sp"
             android:textColor="@color/white"/>

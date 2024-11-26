@@ -11,7 +11,6 @@ import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.data.Center
 import com.example.manetes_artistes_app.data.getCenters
 import com.example.manetes_artistes_app.files.FtpClient
-import com.example.manetes_artistes_app.games.simon_says.activities.MainActivitySimonSays
 import com.example.manetes_artistes_app.menus.StickerSelectorActivity
 import com.example.manetes_artistes_app.stats.StatsState
 

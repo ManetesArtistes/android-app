@@ -31,10 +31,6 @@
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".games.simon_says.activities.MainActivitySimonSays"
-            android:exported="false"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".games.coloring_pages.activities.ImageEditorActivity"
             android:exported="true"
             android:label="Image Editor"

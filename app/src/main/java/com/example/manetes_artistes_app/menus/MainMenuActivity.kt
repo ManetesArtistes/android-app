@@ -9,7 +9,7 @@ import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.games.coloring_pages.activities.ImageListActivity
-import com.example.manetes_artistes_app.games.simon_says.activities.MainActivitySimonSays
+import com.example.manetes_artistes_app.games.simon_says.activities.GameActivitySimonSays
 import com.example.manetes_artistes_app.stats.StatsState
 
 class MainMenuActivity : ImmersiveCompatActivity() {
@@ -31,7 +31,7 @@ class MainMenuActivity : ImmersiveCompatActivity() {
         }
 
         simonButton.setOnClickListener {
-            val intent = Intent(this, MainActivitySimonSays::class.java)
+            val intent = Intent(this, GameActivitySimonSays::class.java)
             startActivity(intent)
         }
 

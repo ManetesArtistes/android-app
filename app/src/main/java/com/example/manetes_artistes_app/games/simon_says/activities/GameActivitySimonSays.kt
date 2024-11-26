@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import com.example.manetes_artistes_app.R
+import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.stats.StatsState
 import com.example.manetes_artistes_app.games.simon_says.SimonButton
@@ -58,6 +59,7 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
 
     private fun endSimon(score: Int){
         val intent = Intent(this, EndActivitySimonSays::class.java)
+        intent.putExtra(ActivitiesIntentKeys.SIMON_SCORE, score)
         startActivity(intent)
         StatsState.addScore(score, this)
         finish()
