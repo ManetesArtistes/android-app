@@ -2,11 +2,14 @@ package com.example.manetes_artistes_app.games.simon_says
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.os.Handler
-import android.os.Looper
 import android.widget.ImageButton
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SimonButton(
+    private val lifecycleOwner: LifecycleOwner,
     val button: ImageButton,
     private val onImage: Int,
     private val offImage: Int,
@@ -20,9 +23,10 @@ class SimonButton(
         button.setBackgroundResource(this.onImage)
         sound.start()
 
-        Handler(Looper.getMainLooper()).postDelayed({
+        lifecycleOwner.lifecycleScope.launch {
+            delay(1000)
             viewDeactivate()
-        }, 1000)
+        }
 
         sound.setOnCompletionListener {
             sound.release()

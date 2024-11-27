@@ -33,7 +33,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         (System.currentTimeMillis() / 1000).toInt(),
         0,
         0,
-        ArrayList<Int>()
+0
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +103,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
 
             // Save draw stat
             drawStat.endTimestamp = (System.currentTimeMillis() / 1000).toInt()
-            drawStat.durationSeconds = drawStat.timestamp - drawStat.endTimestamp
+            drawStat.durationSeconds = drawStat.endTimestamp - drawStat.timestamp
             // Store the draw stat
             StatsState.addStat(drawStat, this)
 

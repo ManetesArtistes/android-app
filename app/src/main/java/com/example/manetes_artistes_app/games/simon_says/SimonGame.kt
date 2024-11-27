@@ -5,13 +5,16 @@ import android.os.Looper
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.games.simon_says.activities.GameActivitySimonSays
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-
-
 class SimonGame(
+    private val lifecycleOwner: LifecycleOwner,
     val simonYellowBtn: SimonButton,
     val simonBlueBtn: SimonButton,
     val simonRedBtn: SimonButton,
@@ -45,31 +48,27 @@ class SimonGame(
     }
 
     fun newLevel(){
-        var delay = 0
         val randomNumber = Random.nextInt(1, 5)
         this.moves.add(randomNumber)
 
         this.currentPlay = 0
         lblScore.text = score.toString()
 
-        offButtons()
-        disableButtons()
+        lifecycleOwner.lifecycleScope.launch {
+            disableButtons()
 
-        for (i in this.moves){
-            delay += 1500
-            Handler(Looper.getMainLooper()).postDelayed({
-                when (i) {
-                    1 -> simonYellowBtn.activate(this)
-                    2 -> simonBlueBtn.activate(this)
-                    3 -> simonRedBtn.activate(this)
-                    4 -> simonGreenBtn.activate(this)
+            for (move in moves) {
+                delay(1500)
+                when (move) {
+                    1 -> simonYellowBtn.activate(this@SimonGame)
+                    2 -> simonBlueBtn.activate(this@SimonGame)
+                    3 -> simonRedBtn.activate(this@SimonGame)
+                    4 -> simonGreenBtn.activate(this@SimonGame)
                 }
-            }, delay.toLong())
-        }
-
-        Handler(Looper.getMainLooper()).postDelayed({
+            }
+            delay(1500)
             enableButtons()
-        }, delay + 1500L)
+        }
     }
 
     fun check(selection: Int){
@@ -79,9 +78,10 @@ class SimonGame(
                 score++
                 newLevel()
             }
-            Handler(Looper.getMainLooper()).postDelayed({
+            lifecycleOwner.lifecycleScope.launch {
+                delay(1100)
                 enableButtons()
-            },1100)
+            }
         }else{
             onGameEnd(this.score)
         }

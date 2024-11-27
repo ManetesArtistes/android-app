@@ -1,10 +1,12 @@
 package com.example.manetes_artistes_app.common
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.manetes_artistes_app.MainActivity
 import com.example.manetes_artistes_app.R
 
 class NetworkErrorActivity : ImmersiveCompatActivity() {
@@ -20,7 +22,8 @@ class NetworkErrorActivity : ImmersiveCompatActivity() {
 
         val retryButton = findViewById<Button>(R.id.retryButton)
         retryButton.setOnClickListener {
-            finish()
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

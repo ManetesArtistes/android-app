@@ -13,6 +13,7 @@ import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.games.coloring_pages.activities.ImageEditorActivity
 import com.example.manetes_artistes_app.imageEditor.StickerLoader
 import com.example.manetes_artistes_app.imageEditor.DrawLoader
+import com.example.manetes_artistes_app.user.User
 
 class StickerSelectorActivity : ImmersiveCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,5 +44,6 @@ class StickerSelectorActivity : ImmersiveCompatActivity() {
         StickerLoader.loadStickers(this)
         intent.putExtra(ActivitiesIntentKeys.STICKER, sticker)
         startActivity(intent)
+        User.stickerId = sticker.id
     }
 }
