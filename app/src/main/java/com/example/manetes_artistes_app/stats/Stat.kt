@@ -5,7 +5,7 @@ data class DrawStat(
     var timestamp: Int,
     var endTimestamp: Int,
     var durationSeconds: Int,
-    var usedColorsAmount: ArrayList<Int>,
+    var usedColorsAmount: Int,
 )
 
 data class Stat(

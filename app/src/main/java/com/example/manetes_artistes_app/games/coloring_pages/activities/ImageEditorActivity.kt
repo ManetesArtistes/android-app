@@ -115,6 +115,6 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     fun setSelectedColor(color: Int) {
         selectedColor = color
         canvas?.setFillColor(selectedColor)
-        drawStat.usedColorsAmount.add(selectedColor)
+        drawStat.usedColorsAmount += 1
     }
 }
