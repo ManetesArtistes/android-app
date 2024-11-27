@@ -2,10 +2,10 @@ package com.example.manetes_artistes_app.stats
 
 data class DrawStat(
     var draw_id: Int,
-    var startTimestamp: Int,
+    var timestamp: Int,
     var endTimestamp: Int,
     var durationSeconds: Int,
-    var usedColorsAmount: Int,
+    var usedColorsAmount: ArrayList<Int>,
 )
 
 data class Stat(

@@ -21,11 +21,15 @@ class SimonButton(
         sound.start()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            button.setBackgroundResource(this.offImage)
+            viewDeactivate()
         }, 1000)
 
         sound.setOnCompletionListener {
             sound.release()
         }
+    }
+
+    fun viewDeactivate(){
+        button.setBackgroundResource(this.offImage)
     }
 }

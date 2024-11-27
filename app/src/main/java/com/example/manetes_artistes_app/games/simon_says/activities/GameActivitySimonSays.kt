@@ -2,6 +2,8 @@ package com.example.manetes_artistes_app.games.simon_says.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
@@ -30,7 +32,9 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
 
         val game = SimonGame(simonYellowBtn, simonBlueBtn, simonRedBtn, simonGreenBtn, lblScore) { score -> endSimon(score) }
 
-        game.newLevel()
+        Handler(Looper.getMainLooper()).postDelayed({
+            game.newLevel()
+        },2000)
 
         backBtn.setOnClickListener {
             finish()

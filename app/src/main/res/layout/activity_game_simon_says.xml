@@ -31,9 +31,15 @@
                     android:layout_height="@dimen/backButton"
                     android:layout_marginHorizontal="@dimen/backButtonMargin"/>
 
+                <Space
+                    android:layout_width="@dimen/backButton"
+                    android:layout_height="@dimen/backButton"
+                    android:layout_marginHorizontal="@dimen/backButtonMargin">
+                </Space>
+
                 <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="500dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:background="@drawable/simon_score_background">
@@ -43,19 +49,29 @@
                         android:text="@string/score_text"
                         android:fontFamily="@font/itim"
                         android:textColor="@color/white"
-                        android:textSize="45sp"/>
+                        android:textSize="50sp"/>
                     <TextView
                         android:id="@+id/score"
                         android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_column="1"
                         android:text="@string/score"
                         android:textSize="90sp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/itim">
                     </TextView>
                 </LinearLayout>
+                <Space
+                    android:layout_width="@dimen/backButton"
+                    android:layout_height="@dimen/backButton"
+                    android:layout_marginHorizontal="@dimen/backButtonMargin">
+                </Space>
+
+                <Space
+                    android:layout_width="@dimen/backButton"
+                    android:layout_height="@dimen/backButton"
+                    android:layout_marginHorizontal="@dimen/backButtonMargin">
+                </Space>
 
                 <Space
                     android:layout_width="@dimen/backButton"
@@ -74,7 +90,7 @@
 
             <ImageButton
                 android:id="@+id/yellowBtn"
-                android:background="@drawable/simon_says_yellow_button_off"
+                android:background="@drawable/simon_says_yellow_button_on"
                 android:layout_width="@dimen/simonButton"
                 android:layout_height="@dimen/simonButton"
                 android:contentDescription="@string/simon_says_yellow">
@@ -82,7 +98,7 @@
 
             <ImageButton
                 android:id="@+id/blueBtn"
-                android:background="@drawable/simon_says_blue_button_off"
+                android:background="@drawable/simon_says_blue_button_on"
                 android:layout_width="@dimen/simonButton"
                 android:layout_height="@dimen/simonButton"
                 android:contentDescription="@string/simon_says_blue">
@@ -90,7 +106,7 @@
 
             <ImageButton
                 android:id="@+id/redBtn"
-                android:background="@drawable/simon_says_red_button_off"
+                android:background="@drawable/simon_says_red_button_on"
                 android:layout_width="@dimen/simonButton"
                 android:layout_height="@dimen/simonButton"
                 android:contentDescription="@string/simon_says_red">
@@ -98,7 +114,7 @@
 
             <ImageButton
                 android:id="@+id/greenBtn"
-                android:background="@drawable/simon_says_green_button_off"
+                android:background="@drawable/simon_says_green_button_on"
                 android:layout_width="@dimen/simonButton"
                 android:layout_height="@dimen/simonButton"
                 android:contentDescription="@string/simon_says_green">

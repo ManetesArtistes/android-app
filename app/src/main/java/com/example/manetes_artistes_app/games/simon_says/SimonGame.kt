@@ -37,6 +37,13 @@ class SimonGame(
         simonGreenBtn.button.isEnabled = true
     }
 
+    fun offButtons(){
+        simonYellowBtn.viewDeactivate()
+        simonBlueBtn.viewDeactivate()
+        simonRedBtn.viewDeactivate()
+        simonGreenBtn.viewDeactivate()
+    }
+
     fun newLevel(){
         var delay = 0
         val randomNumber = Random.nextInt(1, 5)
@@ -45,6 +52,7 @@ class SimonGame(
         this.currentPlay = 0
         lblScore.text = score.toString()
 
+        offButtons()
         disableButtons()
 
         for (i in this.moves){

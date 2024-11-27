@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="400dp"
             android:layout_height="550dp"
-            android:background="@color/white"
+            android:background="@drawable/main_box_background"
             android:orientation="vertical"
             android:padding="20dp">
             <TextView
@@ -23,22 +23,34 @@
                 android:layout_height="wrap_content"
                 android:textSize="50sp"
                 android:text="Centre:"
+                android:textColor="@color/white"
                 android:fontFamily="@font/itim"/>
 
-            <ExpandableListView
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"/>
+            <Spinner
+                android:id="@+id/centersList"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:spinnerMode="dropdown"
+                android:background="@color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:textSize="50sp"
                 android:text="Classe:"
                 android:fontFamily="@font/itim"/>
 
-            <ExpandableListView
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"/>
+            <Spinner
+                android:id="@+id/groupsList"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:spinnerMode="dropdown"
+                android:background="@color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,10 +64,7 @@
                     android:contentDescription="@string/app_name"
                     />
             </LinearLayout>
-
         </LinearLayout>
-
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

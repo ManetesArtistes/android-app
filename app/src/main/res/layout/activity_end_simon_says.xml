@@ -15,14 +15,30 @@
         android:background="@drawable/background_black"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/simoneScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/score"
-            android:text="@string/score"
-            android:textSize="100sp"
-            android:textColor="@color/white"/>
+        <LinearLayout
+            android:layout_width="500dp"
+            android:layout_height="400dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/simon_score_table_background">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score_text"
+                android:fontFamily="@font/itim"
+                android:textColor="@color/white"
+                android:textSize="70sp"/>
+            <TextView
+                android:id="@+id/simoneScore"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score"
+                android:textSize="150sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/itim">
+            </TextView>
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/exitButton"

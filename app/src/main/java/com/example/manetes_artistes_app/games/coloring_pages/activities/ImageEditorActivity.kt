@@ -33,7 +33,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         (System.currentTimeMillis() / 1000).toInt(),
         0,
         0,
-        0
+        ArrayList<Int>()
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +103,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
 
             // Save draw stat
             drawStat.endTimestamp = (System.currentTimeMillis() / 1000).toInt()
-            drawStat.durationSeconds = drawStat.startTimestamp - drawStat.endTimestamp
+            drawStat.durationSeconds = drawStat.timestamp - drawStat.endTimestamp
             // Store the draw stat
             StatsState.addStat(drawStat, this)
 
@@ -115,6 +115,6 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     fun setSelectedColor(color: Int) {
         selectedColor = color
         canvas?.setFillColor(selectedColor)
-        drawStat.usedColorsAmount += 1
+        drawStat.usedColorsAmount.add(selectedColor)
     }
 }
