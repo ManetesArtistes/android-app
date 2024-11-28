@@ -42,7 +42,7 @@ class ImageListAdapter(
                     }
                     4 -> {
                         drawItemContainer.setBackgroundResource(R.drawable.border_top_right)
-                        backgroundContainer.setBackgroundResource(R.drawable.background_sky_top_right)
+                        backgroundContainer.setBackgroundResource(R.drawable.background_jungle_top_right)
                     }
                     13 -> {
                         drawItemContainer.setBackgroundResource(R.drawable.border_bottom_left)

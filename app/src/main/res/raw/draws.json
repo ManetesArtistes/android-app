@@ -25,11 +25,11 @@
   },
   {
     "id": 4,
-    "white_image": "draw_white_moon",
-    "draw_colored_image": "draw_colored_moon",
-    "square_background_image": "background_square_sky",
-    "background_image": "background_sky",
-    "colors": [2, 8, 15, 18, 13, 19, 1, 12]
+    "white_image": "draw_white_lion",
+    "draw_colored_image": "draw_colored_lion",
+    "square_background_image": "background_square_jungle",
+    "background_image": "background_jungle",
+    "colors": [2, 5, 15, 16, 13, 6, 1, 12]
   },
   {
     "id": 5,
