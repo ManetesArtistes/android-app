@@ -12,8 +12,6 @@ import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.imageEditor.Draw
 import com.example.manetes_artistes_app.imageEditor.DrawLoader
 import com.example.manetes_artistes_app.games.coloring_pages.imageEditor.ImageListAdapter
-import com.example.manetes_artistes_app.menus.MainMenuActivity
-import com.example.manetes_artistes_app.user.User
 
 class ImageListActivity: ImmersiveCompatActivity() {
 

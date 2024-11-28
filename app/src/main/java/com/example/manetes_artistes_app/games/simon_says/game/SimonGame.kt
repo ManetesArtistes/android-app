@@ -1,14 +1,8 @@
-package com.example.manetes_artistes_app.games.simon_says
+package com.example.manetes_artistes_app.games.simon_says.game
 
-import android.os.Handler
-import android.os.Looper
-import android.widget.ImageButton
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
-import com.example.manetes_artistes_app.R
-import com.example.manetes_artistes_app.games.simon_says.activities.GameActivitySimonSays
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random

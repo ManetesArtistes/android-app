@@ -20,11 +20,11 @@
             android:name=".common.NetworkErrorActivity"
             android:exported="false" />
         <activity
-            android:name=".menus.MainMenuActivity"
+            android:name=".menus.activities.MainMenuActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".menus.StickerSelectorActivity"
+            android:name=".menus.activities.StickerSelectorActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity

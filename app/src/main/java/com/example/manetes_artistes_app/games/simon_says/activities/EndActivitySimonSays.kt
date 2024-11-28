@@ -1,17 +1,11 @@
 package com.example.manetes_artistes_app.games.simon_says.activities
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
-import com.example.manetes_artistes_app.menus.MainMenuActivity
 
 class EndActivitySimonSays : ImmersiveCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +18,8 @@ class EndActivitySimonSays : ImmersiveCompatActivity() {
 
         lblScore.text = score.toString()
 
-        val exitBtn = findViewById<ImageButton>(R.id.exitButton)
+        val exitBtn = findViewById<TextView>(R.id.exitButton)
+        exitBtn.text = "SORTIR"
 
         exitBtn.setOnClickListener {
             finish()

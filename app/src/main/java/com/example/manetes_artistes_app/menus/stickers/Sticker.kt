@@ -1,3 +1,5 @@
+package com.example.manetes_artistes_app.menus.stickers
+
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 

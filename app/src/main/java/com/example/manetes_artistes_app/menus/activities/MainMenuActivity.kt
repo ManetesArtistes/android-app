@@ -1,6 +1,6 @@
-package com.example.manetes_artistes_app.menus
+package com.example.manetes_artistes_app.menus.activities
 
-import Sticker
+import com.example.manetes_artistes_app.menus.stickers.Sticker
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
@@ -10,7 +10,6 @@ import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.games.coloring_pages.activities.ImageListActivity
 import com.example.manetes_artistes_app.games.simon_says.activities.GameActivitySimonSays
-import com.example.manetes_artistes_app.stats.StatsState
 
 class MainMenuActivity : ImmersiveCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

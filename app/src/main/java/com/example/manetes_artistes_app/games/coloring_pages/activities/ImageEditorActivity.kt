@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorLoader
 import com.example.manetes_artistes_app.games.coloring_pages.colors.ColorPalette
@@ -90,7 +91,8 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
     }
 
     private fun addOnSaveClickListener(drawData: Draw?){
-        val doneButton = findViewById<ImageButton>(R.id.doneButton)
+        val doneButton = findViewById<TextView>(R.id.doneButton)
+        doneButton.text = "FET"
 
         doneButton.setOnClickListener {
             if(drawData != null){

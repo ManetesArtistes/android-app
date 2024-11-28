@@ -1,4 +1,4 @@
-package com.example.manetes_artistes_app.games.simon_says
+package com.example.manetes_artistes_app.games.simon_says.game
 
 import android.content.Context
 import android.media.MediaPlayer

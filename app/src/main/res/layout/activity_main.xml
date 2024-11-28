@@ -56,12 +56,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center">
-                <ImageButton
+                <include layout="@layout/button"
                     android:id="@+id/onlyButton"
-                    android:background="@drawable/button"
-                    android:layout_width="300dp"
-                    android:layout_height="100dp"
-                    android:contentDescription="@string/app_name"
                     />
             </LinearLayout>
         </LinearLayout>

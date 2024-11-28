@@ -40,14 +40,13 @@
             </TextView>
         </LinearLayout>
 
-        <ImageButton
+        <include layout="@layout/button"
             android:id="@+id/exitButton"
             android:layout_width="300dp"
             android:layout_height="100dp"
-            android:background="@drawable/button"
             android:layout_margin="25dp"
-            android:contentDescription="@string/exit">
-        </ImageButton>
+            />
+
     </LinearLayout>
 
 

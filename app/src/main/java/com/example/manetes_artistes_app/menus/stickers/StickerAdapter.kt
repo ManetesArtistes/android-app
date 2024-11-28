@@ -1,3 +1,5 @@
+package com.example.manetes_artistes_app.menus.stickers
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -5,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manetes_artistes_app.R
-import com.example.manetes_artistes_app.imageEditor.Draw
 
 class StickerAdapter(
     private val context: Context,

@@ -1,7 +1,7 @@
-package com.example.manetes_artistes_app.menus
+package com.example.manetes_artistes_app.menus.activities
 
-import Sticker
-import StickerAdapter
+import com.example.manetes_artistes_app.menus.stickers.Sticker
+import com.example.manetes_artistes_app.menus.stickers.StickerAdapter
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
-import com.example.manetes_artistes_app.games.coloring_pages.activities.ImageEditorActivity
-import com.example.manetes_artistes_app.imageEditor.StickerLoader
-import com.example.manetes_artistes_app.imageEditor.DrawLoader
+import com.example.manetes_artistes_app.menus.stickers.StickerLoader
 import com.example.manetes_artistes_app.user.User
 
 class StickerSelectorActivity : ImmersiveCompatActivity() {

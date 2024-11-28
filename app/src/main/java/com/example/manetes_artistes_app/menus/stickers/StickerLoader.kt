@@ -1,7 +1,6 @@
-package com.example.manetes_artistes_app.imageEditor
+package com.example.manetes_artistes_app.menus.stickers
 
 
-import Sticker
 import android.content.Context
 import com.example.manetes_artistes_app.R
 import com.google.gson.Gson
@@ -25,7 +24,7 @@ object StickerLoader {
         stickersList = gson.fromJson(jsonString, stickerListType)
         println("++++++ stickers list init +++++")
         println(stickersList)
-        // Convert the List<Sticker> to a HashMap<Int, Sticker>
+        // Convert the List<com.example.manetes_artistes_app.menus.stickers.Sticker> to a HashMap<Int, com.example.manetes_artistes_app.menus.stickers.Sticker>
         stickersMap.putAll(stickersList.associateBy { it.id })
         println(stickersMap)
     }

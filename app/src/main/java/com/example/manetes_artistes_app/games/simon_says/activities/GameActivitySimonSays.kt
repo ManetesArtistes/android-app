@@ -2,9 +2,6 @@ package com.example.manetes_artistes_app.games.simon_says.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -13,10 +10,8 @@ import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
 import com.example.manetes_artistes_app.stats.StatsState
-import com.example.manetes_artistes_app.games.simon_says.SimonButton
-import com.example.manetes_artistes_app.games.simon_says.SimonGame
-import com.example.manetes_artistes_app.menus.MainMenuActivity
-import com.example.manetes_artistes_app.user.User
+import com.example.manetes_artistes_app.games.simon_says.game.SimonButton
+import com.example.manetes_artistes_app.games.simon_says.game.SimonGame
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
