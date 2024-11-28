@@ -69,47 +69,60 @@ class CanvasView @JvmOverloads constructor(
         val bitmap = canvasBitmap ?: return
         if (targetColor == fillColor) return
 
-        val stack: MutableList<Pair<Int, Int>> = mutableListOf()
-        stack.add(Pair(x, y))
-
         val width = bitmap.width
         val height = bitmap.height
         val targetColorAlpha = Color.alpha(targetColor)
 
-        // Instead of using a separate set to track processed pixels, we will modify the bitmap itself
-        val processed = Array(height) { BooleanArray(width) }
+        // Handle the case where the target color is already filled
+        if (targetColor == fillColor) return
 
-        // Process each pixel
+        val stack = mutableListOf<Pair<Int, Int>>()
+        stack.add(Pair(x, y))
+
+        // The bitmap pixels (assuming it's a mutable bitmap with direct pixel access)
+        val pixels = IntArray(width * height)
+        bitmap.getPixels(pixels, 0, width, 0, 0, width, height)
+
+        // Calculate index for 2D coordinates
+        fun index(cx: Int, cy: Int) = cy * width + cx
+
+        // Processed pixels tracking
+        val processed = BooleanArray(pixels.size)
+
         while (stack.isNotEmpty()) {
             val (cx, cy) = stack.removeAt(stack.lastIndex)
 
-            // Skip if out of bounds or already processed
-            if (cx !in 0 until width || cy !in 0 until height || processed[cy][cx]) continue
+            // Check bounds and processed pixels
+            if (cx !in 0 until width || cy !in 0 until height || processed[index(cx, cy)]) continue
 
-            val currentColor = bitmap[cx, cy]
+            val currentColor = pixels[index(cx, cy)]
 
             // Skip if the color is not the target color or if it's a transparent pixel
             if (currentColor != targetColor || Color.alpha(currentColor) == 0) continue
 
             // Fill the pixel with the desired fill color
-            bitmap[cx, cy] = fillColor
-            processed[cy][cx] = true
+            pixels[index(cx, cy)] = fillColor
+            processed[index(cx, cy)] = true
 
-            // Add neighbors to the stack (right, left, down, up)
-            if (cx + 1 < width && !processed[cy][cx + 1] && bitmap[cx + 1, cy] == targetColor) {
+            // Add neighbors (right, left, down, up)
+            if (cx + 1 < width && !processed[index(cx + 1, cy)] && pixels[index(cx + 1, cy)] == targetColor) {
                 stack.add(Pair(cx + 1, cy))
             }
-            if (cx - 1 >= 0 && !processed[cy][cx - 1] && bitmap[cx - 1, cy] == targetColor) {
+            if (cx - 1 >= 0 && !processed[index(cx - 1, cy)] && pixels[index(cx - 1, cy)] == targetColor) {
                 stack.add(Pair(cx - 1, cy))
             }
-            if (cy + 1 < height && !processed[cy + 1][cx] && bitmap[cx, cy + 1] == targetColor) {
+            if (cy + 1 < height && !processed[index(cx, cy + 1)] && pixels[index(cx, cy + 1)] == targetColor) {
                 stack.add(Pair(cx, cy + 1))
             }
-            if (cy - 1 >= 0 && !processed[cy - 1][cx] && bitmap[cx, cy - 1] == targetColor) {
+            if (cy - 1 >= 0 && !processed[index(cx, cy - 1)] && pixels[index(cx, cy - 1)] == targetColor) {
                 stack.add(Pair(cx, cy - 1))
             }
         }
+
+        // Set the updated pixels back to the bitmap
+        bitmap.setPixels(pixels, 0, width, 0, 0, width, height)
     }
+
 
 
     fun setFillColor(color: Int){
