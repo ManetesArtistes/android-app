@@ -29,7 +29,7 @@
     "draw_colored_image": "draw_colored_lion",
     "square_background_image": "background_square_jungle",
     "background_image": "background_jungle",
-    "colors": [2, 5, 15, 16, 13, 6, 1, 12]
+    "colors": [2, 5, 16, 8, 17, 6, 1, 12]
   },
   {
     "id": 5,
