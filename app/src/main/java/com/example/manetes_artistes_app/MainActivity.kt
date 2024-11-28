@@ -67,7 +67,6 @@ class MainActivity : ImmersiveCompatActivity() {
             User.groupId = centers[centersList.selectedItemPosition].groups[groupsList.selectedItemPosition].group_id
             finish()
         }
-
     }
 
     private fun centersAdapter(centersNames: List<String>): ArrayAdapter<String> {

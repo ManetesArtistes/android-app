@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manetes_artistes_app.R
 
@@ -13,6 +14,8 @@ class ColorAdapter(
     private val colors: List<Color>,
     private val onColorSelected: (Int) -> Unit
 ) : RecyclerView.Adapter<ColorAdapter.ColorViewHolder>() {
+
+    private var selectedColor: ImageView = ImageView(context)
 
     inner class ColorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val colorImageView: ImageView = itemView.findViewById(R.id.colorImage)
@@ -25,20 +28,33 @@ class ColorAdapter(
             }
             colorImageView.setImageResource(imageResId)
 
-            // Apply a top margin of 10dp only to the first item
             if (position == 0) {
-                val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
-                layoutParams.topMargin = context.resources.getDimensionPixelSize(R.dimen.top_margin_firstcol)
-                itemView.layoutParams = layoutParams
+                colorImageView.setPadding(0) // Seleccionat
+                selectedColor = colorImageView
             } else {
-                // Reset the margin for other items
-                val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
-                layoutParams.topMargin = 0
-                itemView.layoutParams = layoutParams
+                colorImageView.setPadding(10) // No seleccionat
+            }
+
+            val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
+
+            when (position) {
+                0,2,4,6 ->  {
+                    layoutParams.topMargin = context.resources.getDimensionPixelSize(R.dimen.top_margin_firstcol)
+                    layoutParams.bottomMargin = 0
+                    itemView.layoutParams = layoutParams
+                }
+                else -> {
+                    layoutParams.topMargin = 0
+                    layoutParams.bottomMargin = context.resources.getDimensionPixelSize(R.dimen.top_margin_firstcol)
+                    itemView.layoutParams = layoutParams
+                }
             }
 
             itemView.setOnClickListener {
                 onColorSelected(android.graphics.Color.parseColor(color.hex))
+                selectedColor.setPadding(10)
+                selectedColor = colorImageView
+                selectedColor.setPadding(0)
             }
         }
     }

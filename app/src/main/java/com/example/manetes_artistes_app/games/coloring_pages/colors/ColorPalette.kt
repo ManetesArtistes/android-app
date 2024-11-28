@@ -32,7 +32,11 @@ class ColorPalette @JvmOverloads constructor(
     }
 
     private fun setupRecyclerView() {
-        val layoutManager = GridLayoutManager(context, 2)
+        val layoutManager = object : GridLayoutManager(context, 2){
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
         colorPaletteRecyclerView.layoutManager = layoutManager
         render()
     }

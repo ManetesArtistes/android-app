@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
+import com.example.manetes_artistes_app.MainActivity
 import com.example.manetes_artistes_app.R
 import com.example.manetes_artistes_app.common.ActivitiesIntentKeys
 import com.example.manetes_artistes_app.common.ImmersiveCompatActivity
@@ -36,6 +37,13 @@ class MainMenuActivity : ImmersiveCompatActivity() {
 
         changeStickerButton.setOnClickListener {
             finish()
+        }
+
+        changeStickerButton.setOnLongClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            true
         }
     }
 }

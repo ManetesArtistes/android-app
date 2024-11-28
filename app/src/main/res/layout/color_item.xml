@@ -4,11 +4,10 @@
     android:orientation="vertical"
     android:padding="12dp"
 >
-
     <ImageView
         android:id="@+id/colorImage"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="@dimen/color"
+        android:layout_height="@dimen/color"
         android:layout_gravity="center"
         android:scaleType="fitCenter" />
 </LinearLayout>

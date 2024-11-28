@@ -78,11 +78,10 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         val colors = ColorLoader.getColorsByIds(draw.colors, this)
 
         colorPalette.setColors(colors)
-         setSelectedColor(Color.parseColor(colors[0].hex))
+        setSelectedColor(Color.parseColor(colors[0].hex))
         // Set the listener to handle color selection
         colorPalette.onColorSelected = { selectedColor ->
             this.setSelectedColor(selectedColor)
-            println(this.selectedColor)
         }
 
         val resource = resources.getIdentifier(draw.coloredImage, "drawable", packageName)
