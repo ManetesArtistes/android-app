@@ -67,45 +67,50 @@ class CanvasView @JvmOverloads constructor(
     // BFS flood fill algorithm
     private fun floodFill(x: Int, y: Int, targetColor: Int) {
         val bitmap = canvasBitmap ?: return
-
         if (targetColor == fillColor) return
 
-        val queue: Queue<Pair<Int, Int>> = LinkedList()
-        queue.add(Pair(x, y))
+        val stack: MutableList<Pair<Int, Int>> = mutableListOf()
+        stack.add(Pair(x, y))
 
-        val chunkSize = 200
-        val processedPixels = mutableSetOf<Pair<Int, Int>>()
+        val width = bitmap.width
+        val height = bitmap.height
+        val targetColorAlpha = Color.alpha(targetColor)
 
-        while (queue.isNotEmpty()) {
-            var processedCount = 0
-            val batch = mutableListOf<Pair<Int, Int>>()
+        // Instead of using a separate set to track processed pixels, we will modify the bitmap itself
+        val processed = Array(height) { BooleanArray(width) }
 
-            // Process up to chunkSize pixels at a time
-            while (queue.isNotEmpty() && processedCount < chunkSize) {
-                val (cx, cy) = queue.remove()
-                if (cx !in 0 until bitmap.width || cy !in 0 until bitmap.height || processedPixels.contains(Pair(cx, cy))) continue
+        // Process each pixel
+        while (stack.isNotEmpty()) {
+            val (cx, cy) = stack.removeAt(stack.lastIndex)
 
-                val currentColor = bitmap[cx, cy]
-                if (currentColor == Color.BLACK) continue
+            // Skip if out of bounds or already processed
+            if (cx !in 0 until width || cy !in 0 until height || processed[cy][cx]) continue
 
-                if(targetColor != currentColor) continue
-                if (Color.alpha(currentColor) == 0) continue // Skip transparent pixels
+            val currentColor = bitmap[cx, cy]
 
-                bitmap[cx, cy] = fillColor
-                processedPixels.add(Pair(cx, cy))
-                batch.add(Pair(cx, cy))
+            // Skip if the color is not the target color or if it's a transparent pixel
+            if (currentColor != targetColor || Color.alpha(currentColor) == 0) continue
 
-                // Enqueue neighbors for the next batch
-                queue.add(Pair(cx + 1, cy))
-                queue.add(Pair(cx - 1, cy))
-                queue.add(Pair(cx, cy + 1))
-                queue.add(Pair(cx, cy - 1))
+            // Fill the pixel with the desired fill color
+            bitmap[cx, cy] = fillColor
+            processed[cy][cx] = true
 
-                processedCount++
+            // Add neighbors to the stack (right, left, down, up)
+            if (cx + 1 < width && !processed[cy][cx + 1] && bitmap[cx + 1, cy] == targetColor) {
+                stack.add(Pair(cx + 1, cy))
             }
-
+            if (cx - 1 >= 0 && !processed[cy][cx - 1] && bitmap[cx - 1, cy] == targetColor) {
+                stack.add(Pair(cx - 1, cy))
+            }
+            if (cy + 1 < height && !processed[cy + 1][cx] && bitmap[cx, cy + 1] == targetColor) {
+                stack.add(Pair(cx, cy + 1))
+            }
+            if (cy - 1 >= 0 && !processed[cy - 1][cx] && bitmap[cx, cy - 1] == targetColor) {
+                stack.add(Pair(cx, cy - 1))
+            }
         }
     }
+
 
     fun setFillColor(color: Int){
         fillColor = color
