@@ -66,6 +66,8 @@ class CanvasView @JvmOverloads constructor(
 
     // BFS flood fill algorithm
     private fun floodFill(x: Int, y: Int, targetColor: Int) {
+        // return at black color
+        if(targetColor == Color.BLACK) return
         val bitmap = canvasBitmap ?: return
         if (targetColor == fillColor) return
 
