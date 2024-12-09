@@ -22,6 +22,7 @@ class EndActivitySimonSays : ImmersiveCompatActivity() {
         exitBtn.text = "SORTIR"
 
         exitBtn.setOnClickListener {
+            reproduceSound(R.raw.activity)
             finish()
         }
     }

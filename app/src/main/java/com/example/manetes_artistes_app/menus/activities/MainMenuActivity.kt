@@ -26,20 +26,24 @@ class MainMenuActivity : ImmersiveCompatActivity() {
         changeStickerButton.setBackgroundResource(resources.getIdentifier(sticker.image, "drawable", packageName))
 
         coloringButton.setOnClickListener {
+            reproduceSound(R.raw.activity)
             val intent = Intent(this, ImageListActivity::class.java)
             startActivity(intent)
         }
 
         simonButton.setOnClickListener {
+            reproduceSound(R.raw.activity)
             val intent = Intent(this, GameActivitySimonSays::class.java)
             startActivity(intent)
         }
 
         changeStickerButton.setOnClickListener {
+            reproduceSound(R.raw.activity)
             finish()
         }
 
         changeStickerButton.setOnLongClickListener {
+            reproduceSound(R.raw.activity)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()

@@ -38,6 +38,7 @@ class StickerSelectorActivity : ImmersiveCompatActivity() {
     }
 
     private fun onStickerSelected(sticker: Sticker) {
+        reproduceSound(R.raw.activity)
         val intent = Intent(this, MainMenuActivity::class.java)
         StickerLoader.loadStickers(this)
         intent.putExtra(ActivitiesIntentKeys.STICKER, sticker)

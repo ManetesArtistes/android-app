@@ -1,6 +1,7 @@
 package com.example.manetes_artistes_app.games.coloring_pages.colors
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,7 @@ class ColorAdapter(
             }
 
             itemView.setOnClickListener {
+                reproduceColorSound()
                 onColorSelected(android.graphics.Color.parseColor(color.hex))
                 selectedColor.setPadding(10)
                 selectedColor = colorImageView
@@ -72,5 +74,13 @@ class ColorAdapter(
 
     override fun getItemCount(): Int {
         return colors.size
+    }
+
+    private fun reproduceColorSound(){
+        val sound: MediaPlayer = MediaPlayer.create(context, R.raw.color)
+        sound.start()
+        sound.setOnCompletionListener {
+            sound.release()
+        }
     }
 }

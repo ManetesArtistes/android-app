@@ -3,11 +3,13 @@ package com.example.manetes_artistes_app.imageEditor
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
+import android.media.MediaPlayer
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.get
 import androidx.core.graphics.set
+import com.example.manetes_artistes_app.R
 import java.util.*
 
 @SuppressLint("ClickableViewAccessibility")
@@ -35,11 +37,11 @@ class CanvasView @JvmOverloads constructor(
                     // Only apply flood fill if target is not already color and is not transparent
                     val targetColor = canvasBitmap!![x, y]
                     if (targetColor != fillColor && Color.alpha(targetColor) != 0) {
+                        reproduceDrawSound()
                         floodFill(x, y, targetColor)
                         invalidate()
                     }
                 }
-
                 activityBitmapStore?.invoke(canvasBitmap!!)
                 true
             } else {
@@ -125,7 +127,13 @@ class CanvasView @JvmOverloads constructor(
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height)
     }
 
-
+    private fun reproduceDrawSound(){
+        val sound: MediaPlayer = MediaPlayer.create(context,R.raw.draw)
+        sound.start()
+        sound.setOnCompletionListener {
+            sound.release()
+        }
+    }
 
     fun setFillColor(color: Int){
         fillColor = color

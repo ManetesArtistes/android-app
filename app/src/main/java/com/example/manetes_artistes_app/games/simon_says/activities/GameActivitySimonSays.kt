@@ -38,6 +38,7 @@ class GameActivitySimonSays : ImmersiveCompatActivity() {
         }
 
         backBtn.setOnClickListener {
+            reproduceSound(R.raw.activity)
             finish()
         }
 

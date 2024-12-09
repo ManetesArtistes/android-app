@@ -53,6 +53,7 @@ class ImageListActivity: ImmersiveCompatActivity() {
     private fun onDrawSelected(draw: Draw) {
         val intent = Intent(this, ImageEditorActivity::class.java)
         DrawLoader.loadDraws(this)
+        reproduceSound(R.raw.activity)
         intent.putExtra(ActivitiesIntentKeys.DRAW_DATA, draw)
         startActivity(intent)
     }
@@ -61,6 +62,7 @@ class ImageListActivity: ImmersiveCompatActivity() {
         val doneButton = findViewById<ImageButton>(R.id.backBtn)
 
         doneButton.setOnClickListener {
+            reproduceSound(R.raw.activity)
             finish()
         }
     }

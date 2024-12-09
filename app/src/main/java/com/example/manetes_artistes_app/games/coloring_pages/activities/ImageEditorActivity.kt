@@ -94,6 +94,7 @@ class ImageEditorActivity: ImmersiveCompatActivity() {
         doneButton.text = "FET"
 
         doneButton.setOnClickListener {
+            reproduceSound(R.raw.done)
             if(drawData != null){
                 val bitmapStorage = BitmapStorageHelper(this)
                 bitmapStorage.storeUserBitmap(bitmap!!, drawData)

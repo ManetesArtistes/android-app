@@ -61,6 +61,7 @@ class MainActivity : ImmersiveCompatActivity() {
 
         button.text="ACCEDIR"
         button.setOnClickListener {
+            reproduceSound(R.raw.activity)
             val intent = Intent(this, StickerSelectorActivity::class.java)
             startActivity(intent)
             User.centerId = centers[centersList.selectedItemPosition].center_id
